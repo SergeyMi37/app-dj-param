@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load my_tags %}
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>{{ pagename }}</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p>На данной страницы отображаются все параметры.</p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Дата создания</th>
+                        <th scope="col">Язык</th>
+                        <th scope="col">Автор</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for param in params %}
+                        <tr>
+                            <td scope="row">{{ param.id }}</td>
+                            <td>
+                                <a href="{% url 'param-detail' param.id %}">
+                                    {{ param.name }}
+                                </a>
+                                <a href="{% url 'param-delete' param.id %}">
+                                    <i style="color: #da7b87" class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                            <td>{{ param.creation_date }}</td>
+                            <td>{{ param.lang }}</td>
+                            <td>{{ param.user | is_empty:"Аноним" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div align="right">
+                    <i style="color: gray;">Всего параметров: {{ count }}</i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <fieldset disabled>
+            <div class="row disabled">
+                <div class="col col-8">
+                    Название: <input type="text" value="{{ param.name }}" class="form-control">
+                </div>
+                <div class="col col-4">
+                    Дата создания:<input type="text" value="{{ param.creation_date }}" class="form-control">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                        <textarea rows="5" cols="40">
+                            {{ param.code }}
+                        </textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="row">
+        <table border="1">
+            <tr>
+                <th>Автор</th>
+                <th>Комментарий</th>
+            </tr>
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.author.username }}</td>
+                    <td>{{ comment.text }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+
+        <div class="row">
+            <form action="{% url 'comment_add' %}" method="POST"> {% csrf_token %}
+                {{ comment_form }}
+                <input type="hidden" name="param_id" value="{{ param.id }}">
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
