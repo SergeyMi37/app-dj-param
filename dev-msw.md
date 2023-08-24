@@ -45,7 +45,9 @@ docker-compose exec iris iris session iris -U IRISAPP
 ## git ------------------------------------------------------------------
 ### commit and push
 ```
-git add * && git commit -am "upd" && git push
+git add *
+git commit -am "upd"
+git push
 ```
 ## git stored
 ```
