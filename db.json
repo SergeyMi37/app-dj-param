@@ -1,0 +1,146 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2023-08-24T16:41:04.590Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "1",
+    "object_repr": "Comment object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$W52iGSnSLyo813qud4Povb$EuGqGkUnaxZOgMGBWiSGl4rDu31AELyPZibfqagyUSM=",
+    "last_login": "2023-08-24T16:39:26.728Z",
+    "is_superuser": true,
+    "username": "adm",
+    "first_name": "",
+    "last_name": "",
+    "email": "adm@localhost.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-08-24T16:39:11.568Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "za4c6cjikqn0kg7jt36oreu0llj2fk69",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHA8NKl-34DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiV2YZKffLWJ65LYDumO7dZ56W5c58l3hBx186pSf18P9O6g46rcW3hVUCTyhh-i11-QEIOainaESk7UetRIgsjIAWQqVnKVCQhpjy5m9P-KCN50:1qZDMl:07dOXXYVZRhV-HwId3Bobc-OOWv0JcViF3hG21HAvWk",
+    "expire_date": "2023-09-07T16:39:27.258Z"
+  }
+},
+{
+  "model": "users.user",
+  "pk": 504026852,
+  "fields": {
+    "created_at": "2023-08-24T17:20:07.791Z",
+    "updated_at": "2023-08-24T17:24:16.548Z",
+    "username": "SergeyMi37",
+    "first_name": "������",
+    "last_name": "����������",
+    "language_code": "ru",
+    "deep_link": null,
+    "is_blocked_bot": false,
+    "is_admin": false
+  }
+},
+{
+  "model": "appmsw.param",
+  "pk": 1,
+  "fields": {
+    "name": "zzz",
+    "lang": "sys",
+    "code": "xxxxxxxxxxxxxxx",
+    "creation_date": "2023-08-24T16:39:42.512Z",
+    "user": 1,
+    "public": true
+  }
+},
+{
+  "model": "appmsw.param",
+  "pk": 3,
+  "fields": {
+    "name": "qq 222 qq",
+    "lang": "prj",
+    "code": "qqqqqq 22222 qqqqqqqqq",
+    "creation_date": "2023-08-24T16:40:13.421Z",
+    "user": 1,
+    "public": true
+  }
+},
+{
+  "model": "appmsw.param",
+  "pk": 4,
+  "fields": {
+    "name": "test",
+    "lang": "sys",
+    "code": "qwqwqwqwqw",
+    "creation_date": "2023-08-24T16:41:29.703Z",
+    "user": 1,
+    "public": true
+  }
+},
+{
+  "model": "appmsw.param",
+  "pk": 5,
+  "fields": {
+    "name": "zzz",
+    "lang": "sys",
+    "code": "ghghghghg",
+    "creation_date": "2023-08-24T17:02:37.880Z",
+    "user": 1,
+    "public": true
+  }
+},
+{
+  "model": "appmsw.param",
+  "pk": 6,
+  "fields": {
+    "name": "ffffff",
+    "lang": "sys",
+    "code": "ffffffffff",
+    "creation_date": "2023-08-24T17:42:42.245Z",
+    "user": 1,
+    "public": true
+  }
+},
+{
+  "model": "appmsw.comment",
+  "pk": 1,
+  "fields": {
+    "text": "ssssssssss",
+    "creation_date": "2023-08-24T16:41:04.284Z",
+    "author": 1,
+    "param": 1
+  }
+},
+{
+  "model": "appmsw.comment",
+  "pk": 5,
+  "fields": {
+    "text": "bbbb",
+    "creation_date": "2023-08-24T18:01:55.027Z",
+    "author": 1,
+    "param": 6
+  }
+},
+{
+  "model": "appmsw.comment",
+  "pk": 6,
+  "fields": {
+    "text": "hhhhh",
+    "creation_date": "2023-08-24T18:02:01.109Z",
+    "author": 1,
+    "param": 6
+  }
+}
+]
