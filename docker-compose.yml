@@ -36,7 +36,7 @@ services:
       dockerfile: LocalDockerfile
     container_name: dtb_django
     restart: always
-    command: bash -c "python manage.py migrate && python manage.py createsuperuser --noinput --username adm --email adm@ya.site & python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && python manage.py loaddata db-test.json & python manage.py createsuperuser --noinput --username adm --email adm@ya.site & python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
