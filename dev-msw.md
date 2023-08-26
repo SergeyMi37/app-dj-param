@@ -19,6 +19,11 @@ python manage.py runserver
 python -m venv dtb_venv && source dtb_venv/Scripts/activate && pip install -r requirements.txt
 python manage.py makemigrations && python manage.py migrate && python manage.py runserver 8081
 
+# https://the-bosha.ru/2016/06/29/django-delaem-damp-bazy-dannykh-i-vosstanavlivaem-iz-nego-s-dumpdata-i-loaddata/
+# https://realpython.com/django-pytest-fixtures/#fixtures-in-django
+python manage.py dumpdata --exclude auth.permission --exclude contenttypes --indent 2 > db-all.json
+python manage.py loaddata db-all.json
+
 ## docker ------------------------------------------------------------------
 ### stoped and clean all containers
 docker stop $(docker ps -a -q) &&  docker rm $(docker ps -a -q) && docker system prune -f
@@ -64,6 +69,11 @@ git config --global credential.helper store
 git config --global user.name "SergeyMi37"
 git config --global user.email "Sergey.Mikhaylenko@gmail.com"
 ```
+## ---------- SQLite
+  sudo apt install sqlite3
+  sqlite3 db.sqlite3 'select * from auth_user'
+  sqlite3 db.sqlite3 'select * from MainApp.snippet'
+  sqlite3 db.sqlite3 'select * from appmsw_param'
 
 ## export IRIS Analytics artifacts
 ```
@@ -144,3 +154,44 @@ wsl -shutdown
 wsl --set-default Ubu20.04-mc-dock
 
 wsl --distribution Ubu20.04 --user msw
+
+# --------------------
+import sqlite3
+
+try:
+    sqlite_connection = sqlite3.connect('sqlite_python.db')
+    cursor = sqlite_connection.cursor()
+    print("База данных создана и успешно подключена к SQLite")
+
+    sqlite_select_query = "select sqlite_version();"
+    cursor.execute(sqlite_select_query)
+    record = cursor.fetchall()
+    print("Версия базы данных SQLite: ", record)
+    cursor.close()
+
+except sqlite3.Error as error:
+    print("Ошибка при подключении к sqlite", error)
+finally:
+    if (sqlite_connection):
+        sqlite_connection.close()
+        print("Соединение с SQLite закрыто")
+#----------------------
+$ python
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> con = sqlite3.connect("db.sqlite3")  
+>>> cursor=con.cursor()
+>>> cursor.execute("select sqlite_version();")
+<sqlite3.Cursor object at 0x00000232697E7CC0>
+>>> record = cursor.fetchall()
+>>> print("Версия базы данных SQLite: ", record)
+Версия базы данных SQLite:  [('3.37.2',)]
+>>> cursor.execute("select * from auth_user")
+<sqlite3.Cursor object at 0x00000232697E7CC0>
+>>> record = cursor.fetchall()
+>>> print("Пользователи", record)
+Пользователи [(1, 'pbkdf2_sha256$260000$W52iGSnSLyo813qud4Povb$EuGqGkUnaxZOgMGBWiSGl4rDu31AELyPZibfqagyUSM=', '2023-08-24 16:39:26.728000', 1, 'adm', '', 'adm@localhost.com', 1, 1, '2023-08-24 16:39:11.568000', '')]
+>>> cursor.close()
+>>> con.close()               
+>>> exit()
