@@ -12,7 +12,7 @@ class ParamForm(ModelForm):
         fields = ['name', 'lang', 'public','code']
         widgets = {
             'name': TextInput(attrs={"placeholder": "Название сниппета", "class": "blue"}),
-            'code': Textarea(attrs={"placeholder": "Код сниппета"}),
+            'code': Textarea(attrs={"placeholder": "Код сниппета",'rows':13, 'cols':80}),
         }
         labels = {
             'name': '',
