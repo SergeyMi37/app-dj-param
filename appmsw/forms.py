@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea, TextInput
+from django.forms import ModelForm, Textarea, TextInput, Select
 from appmsw.models import Param, Comment
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
@@ -9,14 +9,14 @@ class ParamForm(ModelForm):
     class Meta:
         model = Param
         # Описываем поля, которые будем заполнять в форме
-        fields = ['name', 'lang', 'public','code']
+        fields = ['name', 'paropt', 'public','code']
         widgets = {
             'name': TextInput(attrs={"placeholder": "Название сниппета", "class": "blue"}),
             'code': Textarea(attrs={"placeholder": "Код сниппета",'rows':13, 'cols':80}),
         }
         labels = {
             'name': '',
-            'lang': '',
+            'paropt': '',
             'code': ''
         }
 

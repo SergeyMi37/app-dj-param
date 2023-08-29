@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-LANGS = [
+PAROPT = [
     ("sys", "System Parameter"),
     ("app", "Application Parameter"),
     ("prj", "Project"),
@@ -9,7 +9,7 @@ LANGS = [
 
 class Param(models.Model):
     name = models.CharField(max_length=100)
-    lang = models.CharField(max_length=30, choices=LANGS)
+    paropt = models.CharField(max_length=30, choices=PAROPT, default='app')
     code = models.TextField(max_length=5000)
     creation_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,
