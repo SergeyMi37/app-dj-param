@@ -55,7 +55,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def index_page(request):
-    print("user = ", request.user)
     if request.user.is_authenticated:
         errors = []
     else:

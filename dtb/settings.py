@@ -124,12 +124,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 # LANGUAGE_CODE = 'ru'  # язык сайта по умолчанию # https://vivazzi.pro/ru/it/translate-django/
-#LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-US' # de-DE ru-RU
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+# https://egorovegor.ru/django-multiple-language-support/
+LANGUAGE_SESSION_KEY = 'session_language_appname'
+LANGUAGE_COOKIE_NAME = 'cookie_language_appname' 
 
 LANGUAGES = (
     ('en', 'English'),

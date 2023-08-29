@@ -21,13 +21,24 @@ from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 from django.conf.urls.i18n import i18n_patterns
-#urlpatterns = i18n_patterns('',
-#    url(r'^$', 'project.views.home', name='home'),
-#    ...
-#)
 
 from django.views.generic import RedirectView
-from django.conf.urls import url
+#from django.conf.urls import url
+
+
+#from django.conf import settings
+from django.conf.urls import include, url
+#from django.conf.urls.i18n import i18n_patterns
+#from django.contrib import admin
+#from django.conf.urls.static import static
+
+admin.autodiscover()
+
+i18n_urls = (
+    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,3 +61,7 @@ urlpatterns = [
     #url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/logo.png')),
     path('favicon.ico', RedirectView.as_view(url='/static/apptools-admin-hammer.png')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns.extend(i18n_patterns(*i18n_urls, prefix_default_language=False))
+#urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+
