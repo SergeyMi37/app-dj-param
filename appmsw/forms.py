@@ -3,7 +3,7 @@ from appmsw.models import Param, Comment
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
 from django.core.exceptions import ValidationError
-
+from django.utils.translation import ugettext_lazy as _
 
 class ParamForm(ModelForm):
     class Meta:
@@ -11,8 +11,8 @@ class ParamForm(ModelForm):
         # Описываем поля, которые будем заполнять в форме
         fields = ['name', 'paropt', 'public','code']
         widgets = {
-            'name': TextInput(attrs={"placeholder": "Название сниппета", "class": "blue"}),
-            'code': Textarea(attrs={"placeholder": "Код сниппета",'rows':13, 'cols':80}),
+            'name': TextInput(attrs={"placeholder": _('name-param'), "class": "blue"}),
+            'code': Textarea(attrs={"placeholder": _('code-param'),'rows':13, 'cols':80}),
         }
         labels = {
             'name': '',
@@ -35,7 +35,7 @@ class UserRegistrationForm(ModelForm):
         pass2 = self.cleaned_data.get("password2")
         if pass1 and pass2 and pass1 == pass2:
             return pass2 #возвращаем это же поле
-        raise ValidationError("Пароли не совпадают или пустые")
+        raise ValidationError(_('Passwords do not match or are empty'))
 
     def save(self, commit=True):
         user = super().save(commit=False)

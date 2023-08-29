@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <fieldset disabled>
             <div class="row disabled">
                 <div class="col col-8">
-                    Название: <input type="text" value="{{ param.name }}" class="form-control">
+                    {% trans 'Name' %}: <input type="text" value="{{ param.name }}" class="form-control">
                 </div>
                 <div class="col col-4">
-                    Дата создания:<input type="text" value="{{ param.creation_date }}" class="form-control">
+                    {% trans 'Date of creation' %}:<input type="text" value="{{ param.creation_date }}" class="form-control">
                 </div>
             </div>
             <hr>
@@ -23,8 +24,8 @@
         <div class="row">
         <table border="1">
             <tr>
-                <th>Автор</th>
-                <th>Комментарий</th>
+                <th>{% trans 'Author' %}</th>
+                <th>{% trans 'Comments' %}</th>
             </tr>
             {% for comment in comments %}
                 <tr>
@@ -39,7 +40,7 @@
             <form action="{% url 'comment_add' %}" method="POST"> {% csrf_token %}
                 {{ comment_form }}
                 <input type="hidden" name="param_id" value="{{ param.id }}">
-                <button type="submit">Добавить</button>
+                <button type="submit">{% trans 'Add' %}</button>
             </form>
         </div>
     </div>

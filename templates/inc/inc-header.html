@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/logo-folder.png' %}" width="32" height="32" alt="">
-                Param Demo
+                {% trans 'Param Demo' %}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,32 +15,32 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="form-inline">
                         <a class="btn btn-outline-secondary" href="{% url 'param-add' %}">
-                            Добавить параметр
+                            {% trans 'Add parameter' %}
                         </a>
                     </li>
                     <li class="form-inline">
                         <a class="btn btn-outline-info" href="{% url 'param-list' %}">
-                            Посмотреть параметры
+                            {% trans 'See all parameters' %}
                         </a>
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="form-inline">
                         <a class="btn btn-outline-info" href="{% url 'param-my' %}">
-                            Мои параметры
+                            {% trans 'See only my parameters' %}
                         </a>
                     </li>
                     {% endif %}
                 </ul>
             </div>
             {% if request.user.is_authenticated %}
-                <span style="color: white">Welcome,    
+                <span style="color: white">{% trans 'Username' %}:     
                 {% if request.user.is_superuser %}
-                    <a href="/tgadmin/"> {{ request.user.username }} </a>
+                    <a href="/tgadmin/" title="{% trans 'Go to admin panel' %}"> {{ request.user.username }} </a>
                 {% else %}
                     {{ request.user.username }}
                 {% endif %}
                 </span> &nbsp;&nbsp;&nbsp;
-                <div><a href="{% url 'logout' %}"> logout </a></div>
+                <div><a href="{% url 'logout' %}"> {% trans 'logout' %} </a></div>
             {% else %}
                 <form method="post" action="{% url 'login' %}">{% csrf_token %}
                     <input name="username" type="text" placeholder="username">
@@ -51,7 +52,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <button type="submit">login</button>
+                    <button type="submit">{% trans 'login' %}</button>
                 </form>
                 <a href="{% url 'register' %}">register</a>
             {% endif %}

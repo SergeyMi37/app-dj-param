@@ -20,6 +20,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
+from django.conf.urls.i18n import i18n_patterns
+#urlpatterns = i18n_patterns('',
+#    url(r'^$', 'project.views.home', name='home'),
+#    ...
+#)
 
 from django.views.generic import RedirectView
 from django.conf.urls import url

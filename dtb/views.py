@@ -10,6 +10,7 @@ from tgbot.dispatcher import dispatcher
 from tgbot.main import bot
 
 from apptools.iris import classMethod
+from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -80,7 +81,7 @@ def add_param_page(request):
     elif request.method == "GET":
         form = ParamForm()
         context = {
-            'pagename': 'Добавление нового параметра',
+            'pagename': _('Adding a new parameter'),
             'form': form
         }
         return render(request, 'pages/add_param.html', context)
@@ -91,7 +92,7 @@ def param_detail(request, param_id):
     comment_form = CommentForm()
     comments = param.comments.all()
     context = {
-        'pagename': 'Страница параметров',
+        'pagename': _('Options Page'),
         "param": param,
         "comments": comments,
         "comment_form": comment_form,
@@ -132,7 +133,7 @@ def params_page(request,my=False):
 def params_my(request):
     params = params = Param.objects.filter(user=request.user)
     context = {
-        'pagename': 'Мои сниппеты',
+        'pagename': _('My parameters'),
         'params': params
     }
     return render(request, 'pages/view_params.html', context)

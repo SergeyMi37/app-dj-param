@@ -24,6 +24,12 @@ python manage.py makemigrations && python manage.py migrate && python manage.py 
 python manage.py dumpdata --exclude auth.permission --exclude contenttypes --indent 2 > db-all.json
 python manage.py loaddata db-all.json
 
+# https://vivazzi.pro/ru/it/translate-django/
+mkdir locale
+django-admin makemessages -l ru -i dtb_venv -i src
+django-admin makemessages -l en -i dtb_venv -i src
+django-admin makemessages -a -i dtb_venv -i src # update
+django-admin compilemessages -i dtb_venv
 ## docker ------------------------------------------------------------------
 ### stoped and clean all containers
 docker stop $(docker ps -a -q) &&  docker rm $(docker ps -a -q) && docker system prune -f

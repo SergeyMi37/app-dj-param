@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-29 16:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\appmsw\forms.py:14
+msgid "name-param"
+msgstr "Name parameter"
+
+#: .\appmsw\forms.py:15
+msgid "code-param"
+msgstr "Code parameter"
+
+#: .\appmsw\forms.py:38
+msgid "Passwords do not match or are empty"
+msgstr "Passwords do not match or are empty"
+
+#: .\dtb\views.py:84
+msgid "Adding a new parameter"
+msgstr "Adding a new parameter"
+
+#: .\dtb\views.py:95
+msgid "Options Page"
+msgstr "Options Page"
+
+#: .\dtb\views.py:136
+msgid "My parameters"
+msgstr "My parameters"
+
+#: .\templates\inc\inc-header.html:8
+msgid "Param Demo"
+msgstr "Apptools-django-params"
+
+#: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
+msgid "Add parameter"
+msgstr "Add parameter"
+
+#: .\templates\inc\inc-header.html:23
+msgid "See all parameters"
+msgstr "See all parameters"
+
+#: .\templates\inc\inc-header.html:29
+msgid "See only my parameters"
+msgstr "See only my parameters"
+
+#: .\templates\inc\inc-header.html:36
+msgid "Username"
+msgstr "Username"
+
+#: .\templates\inc\inc-header.html:38
+msgid "Go to admin panel"
+msgstr "Go to admin panel"
+
+#: .\templates\inc\inc-header.html:43
+msgid "logout"
+msgstr "logout"
+
+#: .\templates\inc\inc-header.html:55
+msgid "login"
+msgstr "login"
+
+#: .\templates\pages\index.html:15
+msgid "Welcome dear user!"
+msgstr "Welcome dear user!"
+
+#: .\templates\pages\index.html:29 .\templates\pages\index.html:35
+msgid "Find parameter by context"
+msgstr "Find parameter by context"
+
+#: .\templates\pages\index.html:32
+msgid "Context"
+msgstr "Context"
+
+#: .\templates\pages\index.html:38
+msgid "find"
+msgstr "find"
+
+#: .\templates\pages\param_page.html:8 .\templates\pages\view_params.html:26
+msgid "Name"
+msgstr "Name"
+
+#: .\templates\pages\param_page.html:11 .\templates\pages\view_params.html:27
+msgid "Date of creation"
+msgstr "Date of creation"
+
+#: .\templates\pages\param_page.html:27 .\templates\pages\view_params.html:29
+msgid "Author"
+msgstr "Author"
+
+#: .\templates\pages\param_page.html:28
+msgid "Comments"
+msgstr "Comments"
+
+#: .\templates\pages\param_page.html:43
+msgid "Add"
+msgstr "Add"
+
+#: .\templates\pages\view_params.html:15
+msgid "This page displays all options."
+msgstr "This page displays all options."
+
+#: .\templates\pages\view_params.html:28
+msgid "Option"
+msgstr "Option"
+
+#: .\templates\pages\view_params.html:52
+msgid "Total parameters:"
+msgstr "Total parameters:"

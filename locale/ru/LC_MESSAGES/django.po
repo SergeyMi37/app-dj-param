@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-29 16:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\appmsw\forms.py:14
+msgid "name-param"
+msgstr "Имя параметра"
+
+#: .\appmsw\forms.py:15
+msgid "code-param"
+msgstr "Код параметра"
+
+#: .\appmsw\forms.py:38
+msgid "Passwords do not match or are empty"
+msgstr "Пароли не совпадают или пусты"
+
+#: .\dtb\views.py:84
+msgid "Adding a new parameter"
+msgstr "Добавить новый параметр"
+
+#: .\dtb\views.py:95
+msgid "Options Page"
+msgstr "Опции страницы"
+
+#: .\dtb\views.py:136
+msgid "My parameters"
+msgstr "Мои параметры"
+
+#: .\templates\inc\inc-header.html:8
+msgid "Param Demo"
+msgstr "Apptools-django-Параметры"
+
+#: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
+msgid "Add parameter"
+msgstr "Добавить параметр"
+
+#: .\templates\inc\inc-header.html:23
+msgid "See all parameters"
+msgstr "Смотреть все параметры"
+
+#: .\templates\inc\inc-header.html:29
+msgid "See only my parameters"
+msgstr "Смотреть только мои параметры"
+
+#: .\templates\inc\inc-header.html:36
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\templates\inc\inc-header.html:38
+msgid "Go to admin panel"
+msgstr "Перейти в панель администратора"
+
+#: .\templates\inc\inc-header.html:43
+msgid "logout"
+msgstr "Выйти"
+
+#: .\templates\inc\inc-header.html:55
+msgid "login"
+msgstr "Войти"
+
+#: .\templates\pages\index.html:15
+msgid "Welcome dear user!"
+msgstr "Добро пожаловать, уважаемый пользователь!"
+
+#: .\templates\pages\index.html:29 .\templates\pages\index.html:35
+msgid "Find parameter by context"
+msgstr "Найти параметр по контексту"
+
+#: .\templates\pages\index.html:32
+msgid "Context"
+msgstr "Контекст"
+
+#: .\templates\pages\index.html:38
+msgid "find"
+msgstr "найти"
+
+#: .\templates\pages\param_page.html:8 .\templates\pages\view_params.html:26
+msgid "Name"
+msgstr "Имя"
+
+#: .\templates\pages\param_page.html:11 .\templates\pages\view_params.html:27
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: .\templates\pages\param_page.html:27 .\templates\pages\view_params.html:29
+msgid "Author"
+msgstr "Автор"
+
+#: .\templates\pages\param_page.html:28
+msgid "Comments"
+msgstr "Комментарий"
+
+#: .\templates\pages\param_page.html:43
+msgid "Add"
+msgstr "Добавить"
+
+#: .\templates\pages\view_params.html:15
+msgid "This page displays all options."
+msgstr "На данной страницы отображаются все параметры"
+
+#: .\templates\pages\view_params.html:28
+msgid "Option"
+msgstr "Опция"
+
+#: .\templates\pages\view_params.html:52
+msgid "Total parameters:"
+msgstr "Всего параметров"
+
+#~ msgid "View Options"
+#~ msgstr "Смотеть параметры"
+
+#~ msgid "Welcome"
+#~ msgstr "Привет"
