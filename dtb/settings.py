@@ -136,6 +136,7 @@ USE_TZ = True
 LANGUAGES = (
     ('en', 'English'),
     ('ru', 'Russian'),
+    ('de', 'Deutsh'),
 )
 
 # месторасположение файлов перевода

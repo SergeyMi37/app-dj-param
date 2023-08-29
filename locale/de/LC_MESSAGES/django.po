@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-29 16:58+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\appmsw\forms.py:14
+msgid "name-param"
+msgstr ""
+
+#: .\appmsw\forms.py:15
+msgid "code-param"
+msgstr ""
+
+#: .\appmsw\forms.py:38
+msgid "Passwords do not match or are empty"
+msgstr ""
+
+#: .\dtb\views.py:84
+msgid "Adding a new parameter"
+msgstr ""
+
+#: .\dtb\views.py:95
+msgid "Options Page"
+msgstr ""
+
+#: .\dtb\views.py:136
+msgid "My parameters"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:8
+msgid "Param Demo"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
+msgid "Add parameter"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:23
+msgid "See all parameters"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:29
+msgid "See only my parameters"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:36
+msgid "Username"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:38
+msgid "Go to admin panel"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:43
+msgid "logout"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:55
+msgid "login"
+msgstr ""
+
+#: .\templates\pages\add_param.html:18 .\templates\pages\registration.html:11
+msgid "Create"
+msgstr ""
+
+#: .\templates\pages\index.html:15
+msgid "Welcome dear user!"
+msgstr ""
+
+#: .\templates\pages\index.html:29 .\templates\pages\index.html:35
+msgid "Find parameter by context"
+msgstr ""
+
+#: .\templates\pages\index.html:32
+msgid "Context"
+msgstr ""
+
+#: .\templates\pages\index.html:38
+msgid "find"
+msgstr ""
+
+#: .\templates\pages\param_page.html:8 .\templates\pages\view_params.html:26
+msgid "Name"
+msgstr ""
+
+#: .\templates\pages\param_page.html:11 .\templates\pages\view_params.html:27
+msgid "Date of creation"
+msgstr ""
+
+#: .\templates\pages\param_page.html:27 .\templates\pages\view_params.html:29
+msgid "Author"
+msgstr ""
+
+#: .\templates\pages\param_page.html:28
+msgid "Comments"
+msgstr ""
+
+#: .\templates\pages\param_page.html:43
+msgid "Add"
+msgstr ""
+
+#: .\templates\pages\view_params.html:15
+msgid "This page displays all options."
+msgstr ""
+
+#: .\templates\pages\view_params.html:28
+msgid "Option"
+msgstr ""
+
+#: .\templates\pages\view_params.html:52
+msgid "Total parameters:"
+msgstr ""
