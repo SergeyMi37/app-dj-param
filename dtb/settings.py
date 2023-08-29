@@ -17,7 +17,6 @@ dotenv_file = BASE_DIR / ".env"
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(
     "DJANGO_SECRET_KEY",
@@ -96,7 +95,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dtb.wsgi.application'
 ASGI_APPLICATION = 'dtb.asgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -136,7 +134,7 @@ USE_TZ = True
 LANGUAGES = (
     ('en', 'English'),
     ('ru', 'Russian'),
-    ('de', 'Deutsh'),
+    ('de', 'Deutsch'),
 )
 
 # месторасположение файлов перевода
