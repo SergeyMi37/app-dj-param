@@ -23,6 +23,7 @@ python manage.py makemigrations && python manage.py migrate && python manage.py 
 # https://realpython.com/django-pytest-fixtures/#fixtures-in-django
 python manage.py dumpdata --exclude auth.permission --exclude contenttypes --indent 2 > db-all.json
 python manage.py loaddata db-all.json
+python manage.py dumpdata --exclude auth.permission --exclude auth.users --exclude contenttypes --exclude users.user --exclude admin.logentry --exclude sessions.session --indent 2 > db-test.json
 
 # https://vivazzi.pro/ru/it/translate-django/
 # https://egorovegor.ru/django-multiple-language-support/
@@ -32,6 +33,8 @@ django-admin makemessages -l en -i dtb_venv -i src
 django-admin makemessages -a -i dtb_venv -i src # update
 django-admin compilemessages -i dtb_venv -i src
 
+# 
+pip freeze > requirements.txt
 
 ## docker ------------------------------------------------------------------
 ### stoped and clean all containers
