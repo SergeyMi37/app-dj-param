@@ -1,23 +1,10 @@
 [
 {
-  "model": "admin.logentry",
-  "pk": 1,
-  "fields": {
-    "action_time": "2023-08-24T16:41:04.590Z",
-    "user": 1,
-    "content_type": 16,
-    "object_id": "1",
-    "object_repr": "Comment object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$260000$W52iGSnSLyo813qud4Povb$EuGqGkUnaxZOgMGBWiSGl4rDu31AELyPZibfqagyUSM=",
-    "last_login": "2023-08-24T16:39:26.728Z",
+    "last_login": "2023-08-30T09:16:04.723Z",
     "is_superuser": true,
     "username": "adm",
     "first_name": "",
@@ -31,116 +18,96 @@
   }
 },
 {
-  "model": "sessions.session",
-  "pk": "za4c6cjikqn0kg7jt36oreu0llj2fk69",
+  "model": "auth.user",
+  "pk": 2,
   "fields": {
-    "session_data": ".eJxVjMsOwiAQRf-FtSHA8NKl-34DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiV2YZKffLWJ65LYDumO7dZ56W5c58l3hBx186pSf18P9O6g46rcW3hVUCTyhh-i11-QEIOainaESk7UetRIgsjIAWQqVnKVCQhpjy5m9P-KCN50:1qZDMl:07dOXXYVZRhV-HwId3Bobc-OOWv0JcViF3hG21HAvWk",
-    "expire_date": "2023-09-07T16:39:27.258Z"
-  }
-},
-{
-  "model": "users.user",
-  "pk": 504026852,
-  "fields": {
-    "created_at": "2023-08-24T17:20:07.791Z",
-    "updated_at": "2023-08-24T17:24:16.548Z",
-    "username": "SergeyMi37",
-    "first_name": "������",
-    "last_name": "����������",
-    "language_code": "ru",
-    "deep_link": null,
-    "is_blocked_bot": false,
-    "is_admin": false
+    "password": "pbkdf2_sha256$260000$JiTe5LMHLkdjEztnWlD7q6$J/h5L46CXuhvu62qGyPvqgXInIOU3KA2BpIikwRd1ok=",
+    "last_login": "2023-08-24T08:34:42.993Z",
+    "is_superuser": false,
+    "username": "aaa",
+    "first_name": "",
+    "last_name": "",
+    "email": "MIKHAYLENKO@yandex.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-08-24T08:10:06.343Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
   "model": "appmsw.param",
-  "pk": 1,
+  "pk": 24,
   "fields": {
-    "name": "zzz",
-    "lang": "sys",
-    "code": "xxxxxxxxxxxxxxx",
-    "creation_date": "2023-08-24T16:39:42.512Z",
+    "name": "key:Sensorhome",
+    "paropt": "app",
+    "desc": "",
+    "category": "",
+    "code": "{\r\n\"TabName\":\"Sensor-Home\",\r\n\"ClassName\":\"apptools.lte.warmhome\",\r\n\"Method\":\"ShowTabSample\",\r\n\"Role\":\"%All\",\r\n\"TabMenu\":{\"Close\":1},\r\n\"aw-icon\":\"fa-solid fa-temperature-high\",\r\n\"Active\":1,\r\n\"URL\":\"http://find.serpan.site:65092/apptoolsrest/custom-task/user/run&class=apptools.core.rest&met=GetLastLogs&par=\",\r\n\"username\":\"demo\",\r\n\"password\":\"warmhome\",\r\n\"token\":\"657730-456321\"\r\n}",
+    "creation_date": "2023-08-30T11:53:15.249Z",
     "user": 1,
-    "public": true
+    "public": true,
+    "enabled": true
   }
 },
 {
   "model": "appmsw.param",
-  "pk": 3,
+  "pk": 25,
   "fields": {
-    "name": "qq 222 qq",
-    "lang": "prj",
-    "code": "qqqqqq 22222 qqqqqqqqq",
-    "creation_date": "2023-08-24T16:40:13.421Z",
+    "name": "key:SensorCountry",
+    "paropt": "app",
+    "desc": "",
+    "category": "",
+    "code": "{\r\n\"TabName\":\"Sensor in Country\",\r\n\"ClassName\":\"apptools.lte.warmhome\",\r\n\"Method\":\"ShowTabSample\",\r\n\"Role\":\"%All\",\r\n\"TabMenu\":{\"Close\":1},\r\n\"aw-icon\":\"fa-temperature-high\",\r\n\"Active\":0\r\n}",
+    "creation_date": "2023-08-30T11:57:25.160Z",
     "user": 1,
-    "public": true
+    "public": true,
+    "enabled": true
   }
 },
 {
   "model": "appmsw.param",
-  "pk": 4,
+  "pk": 26,
   "fields": {
-    "name": "test",
-    "lang": "sys",
-    "code": "qwqwqwqwqw",
-    "creation_date": "2023-08-24T16:41:29.703Z",
+    "name": "key:SensorCountry2",
+    "paropt": "app",
+    "desc": "",
+    "category": "",
+    "code": "{\r\n\"TabName\":\"Sensor in Dacha\",\r\n\"ClassName\":\"apptools.lte.warmhome\",\r\n\"Method\":\"ShowTabSample\",\r\n\"Role\":\"%All\",\r\n\"TabMenu\":{\"Close\":1},\r\n\"aw-icon\":\"fa-temperature-high\",\r\n\"Active\":0,\r\n\"URL\":\"http://192.168.1.222:52773/apptoolsrest/custom-task/AAA/run&class=apptools.core.rest&met=GetLastLogs&par=\",\r\n\"username\":\"superuser\"\r\n}",
+    "creation_date": "2023-08-30T11:57:57.431Z",
     "user": 1,
-    "public": true
+    "public": true,
+    "enabled": true
   }
 },
 {
   "model": "appmsw.param",
-  "pk": 5,
+  "pk": 27,
   "fields": {
-    "name": "zzz",
-    "lang": "sys",
-    "code": "ghghghghg",
-    "creation_date": "2023-08-24T17:02:37.880Z",
+    "name": "key:SensorCountry3",
+    "paropt": "app",
+    "desc": "",
+    "category": "",
+    "code": "{\r\n\"TabName\":\"Sensors\",\r\n\"ClassName\":\"apptools.lte.warmhome\",\r\n\"Method\":\"ShowTabSample\",\r\n\"Role\":\"%All\",\r\n\"TabMenu\":{\"Close\":1},\r\n\"aw-icon\":\"fa-list-alt\",\r\n\"Active\":0\r\n}",
+    "creation_date": "2023-08-30T11:58:20.631Z",
     "user": 1,
-    "public": true
+    "public": true,
+    "enabled": true
   }
 },
 {
   "model": "appmsw.param",
-  "pk": 6,
+  "pk": 28,
   "fields": {
-    "name": "ffffff",
-    "lang": "sys",
-    "code": "ffffffffff",
-    "creation_date": "2023-08-24T17:42:42.245Z",
+    "name": "key:CameraHome",
+    "paropt": "app",
+    "desc": "",
+    "category": "",
+    "code": "{\r\n\"TabName\":\"Camera-Home\",\r\n\"ClassName\":\"apptools.lte.warmhome\",\r\n\"Method\":\"ShowTabSample\",\r\n\"Role\":\"%All\",\r\n\"TabMenu\":{\"Close\":0},\r\n\"aw-icon\":\"fa-solid fa-video\",\r\n\"Active\":0,\r\n\"URL\":\"http://zind.serpax.site:65092/apptoolsrest/a/infochest#\",\r\n\"username\":\"superuser\",\r\n\"password\":\"SYS\",\r\n\"token\":\"321\"\r\n}",
+    "creation_date": "2023-08-30T11:58:46.007Z",
     "user": 1,
-    "public": true
-  }
-},
-{
-  "model": "appmsw.comment",
-  "pk": 1,
-  "fields": {
-    "text": "ssssssssss",
-    "creation_date": "2023-08-24T16:41:04.284Z",
-    "author": 1,
-    "param": 1
-  }
-},
-{
-  "model": "appmsw.comment",
-  "pk": 5,
-  "fields": {
-    "text": "bbbb",
-    "creation_date": "2023-08-24T18:01:55.027Z",
-    "author": 1,
-    "param": 6
-  }
-},
-{
-  "model": "appmsw.comment",
-  "pk": 6,
-  "fields": {
-    "text": "hhhhh",
-    "creation_date": "2023-08-24T18:02:01.109Z",
-    "author": 1,
-    "param": 6
+    "public": true,
+    "enabled": true
   }
 }
 ]

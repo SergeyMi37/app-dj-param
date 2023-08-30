@@ -11,11 +11,14 @@ PAROPT = [
 class Param(models.Model):
     name = models.CharField(max_length=100)
     paropt = models.CharField(max_length=30, choices=PAROPT, default='app')
-    code = models.TextField(max_length=5000)
+    desc = models.CharField(max_length=1000, default = '')
+    category = models.CharField(max_length=1000, default='')
+    code = models.TextField(max_length=75000, default='')
     creation_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,
                              blank=True, null=True)
     public=models.BooleanField(default=True)
+    enabled=models.BooleanField(default=True)
 
     def __str__(self):
         return f"Param: {self.name}, {self.code}, {self.user}"
