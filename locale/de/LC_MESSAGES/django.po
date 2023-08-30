@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 16:58+0300\n"
+"POT-Creation-Date: 2023-08-30 10:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,21 +30,29 @@ msgstr "Parametercode"
 msgid "Passwords do not match or are empty"
 msgstr "Passwörter stimmen nicht überein oder sind leer"
 
-#: .\dtb\views.py:84
+#: .\dtb\views.py:74 .\templates\inc\inc-header.html:8
+msgid "Param Demo"
+msgstr "Parameter-Demo"
+
+#: .\dtb\views.py:93
 msgid "Adding a new parameter"
 msgstr "Hinzufügen eines neuen Parameters"
 
-#: .\dtb\views.py:95
+#: .\dtb\views.py:104
 msgid "Options Page"
 msgstr "Optionsseite"
 
-#: .\dtb\views.py:136
+#: .\dtb\views.py:115
+msgid "Parameter deleted successfully"
+msgstr "Parameter erfolgreich gelöscht"
+
+#: .\dtb\views.py:121
+msgid "View parameters"
+msgstr "Parameter anzeigen"
+
+#: .\dtb\views.py:125 .\dtb\views.py:145
 msgid "My parameters"
 msgstr "Meine Parameter"
-
-#: .\templates\inc\inc-header.html:8
-msgid "Param Demo"
-msgstr "Parameter-Demo"
 
 #: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
 msgid "Add parameter"
@@ -73,6 +81,10 @@ msgstr "Ausloggen"
 #: .\templates\inc\inc-header.html:55
 msgid "login"
 msgstr "Anmeldung"
+
+#: .\templates\inc\inc-header.html:72
+msgid "Change"
+msgstr "Ändern"
 
 #: .\templates\pages\add_param.html:18 .\templates\pages\registration.html:11
 msgid "Create"

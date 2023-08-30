@@ -5,7 +5,8 @@ from django.http import JsonResponse
 from telegram import Update
 
 from dtb.celery import app
-from dtb.settings import DEBUG
+#from dtb.settings import DEBUG, settings
+import dtb.settings
 from tgbot.dispatcher import dispatcher
 from tgbot.main import bot
 
@@ -31,7 +32,7 @@ class TelegramBotWebhookView(View):
     # WARNING: if fail - Telegram webhook will be delivered again.
     # Can be fixed with async celery task execution
     def post(self, request, *args, **kwargs):
-        if DEBUG:
+        if dtb.settings.DEBUG:
             process_telegram_event(json.loads(request.body))
         else:
             # Process Telegram event in Celery worker (async)
@@ -46,7 +47,7 @@ class TelegramBotWebhookView(View):
         return JsonResponse({"ok": "Get request received! But nothing done"})
 
 ###### Param
-from django.http import Http404
+from django.http import Http404,HttpResponseRedirect
 from django.shortcuts import render, redirect
 from appmsw.models import Param
 from appmsw.forms import ParamForm, UserRegistrationForm, CommentForm
@@ -54,14 +55,23 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+@login_required
+def set_language(request):
+    lang = request.POST.get('lang', 'en')
+    request.session[dtb.settings.LANGUAGE_SESSION_KEY] = lang
+    response = HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    response.set_cookie(dtb.settings.LANGUAGE_COOKIE_NAME, lang)
+    return response
+
+
 def index_page(request):
     if request.user.is_authenticated:
         errors = []
     else:
-        errors = ["password or username not correct"]
+        errors = ['password or username not correct']
 
     context = {
-        'pagename': 'Param Demo',
+        'pagename': _('Param Demo'),
         "errors": errors
     }
 
@@ -102,17 +112,17 @@ def param_detail(request, param_id):
 def param_delete(request, param_id):
     param = Param.objects.get(pk=param_id)
     param.delete()
-    messages.success(request, 'Parameter deleted successfully')
+    messages.success(request, _('Parameter deleted successfully'))
     return redirect('param-list')
 
 
 def params_page(request,my=False):
     params = Param.objects.all()
-    pagename="Просмотр параметров"
+    pagename=_('View parameters')
  
     if my and request.user.is_authenticated:
         params = Param.objects.filter(user=request.user)
-        pagename="Мои параметры"
+        pagename=_("My parameters")
 
     param_context = request.GET.get('param_context')
     if param_context:

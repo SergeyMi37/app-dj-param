@@ -29,9 +29,7 @@ mkdir locale
 django-admin makemessages -l ru -i dtb_venv -i src
 django-admin makemessages -l en -i dtb_venv -i src
 django-admin makemessages -a -i dtb_venv -i src # update
-django-admin compilemessages -i dtb_venv
-
-
+django-admin compilemessages -i dtb_venv -i src
 ## docker ------------------------------------------------------------------
 ### stoped and clean all containers
 docker stop $(docker ps -a -q) &&  docker rm $(docker ps -a -q) && docker system prune -f
@@ -164,8 +162,6 @@ wsl --set-default Ubu20.04-mc-dock
 wsl --distribution Ubu20.04 --user msw
 
 # --------------------
-# https://pythonru.com/biblioteki/vvedenie-v-sqlite-python
-
 import sqlite3
 
 try:
@@ -186,7 +182,6 @@ finally:
         sqlite_connection.close()
         print("Соединение с SQLite закрыто")
 #----------------------
-
 $ python
 Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.

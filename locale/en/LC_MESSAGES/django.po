@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 16:21+0300\n"
+"POT-Creation-Date: 2023-08-30 10:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,21 +30,29 @@ msgstr "Code parameter"
 msgid "Passwords do not match or are empty"
 msgstr "Passwords do not match or are empty"
 
-#: .\dtb\views.py:84
+#: .\dtb\views.py:74 .\templates\inc\inc-header.html:8
+msgid "Param Demo"
+msgstr "Apptools-django-params"
+
+#: .\dtb\views.py:93
 msgid "Adding a new parameter"
 msgstr "Adding a new parameter"
 
-#: .\dtb\views.py:95
+#: .\dtb\views.py:104
 msgid "Options Page"
 msgstr "Options Page"
 
-#: .\dtb\views.py:136
+#: .\dtb\views.py:115
+msgid "Parameter deleted successfully"
+msgstr "Parameter deleted successfully"
+
+#: .\dtb\views.py:121
+msgid "View parameters"
+msgstr "View parameters"
+
+#: .\dtb\views.py:125 .\dtb\views.py:145
 msgid "My parameters"
 msgstr "My parameters"
-
-#: .\templates\inc\inc-header.html:8
-msgid "Param Demo"
-msgstr "Apptools-django-params"
 
 #: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
 msgid "Add parameter"
@@ -73,6 +81,14 @@ msgstr "logout"
 #: .\templates\inc\inc-header.html:55
 msgid "login"
 msgstr "login"
+
+#: .\templates\inc\inc-header.html:72
+msgid "Change"
+msgstr "Change"
+
+#: .\templates\pages\add_param.html:18 .\templates\pages\registration.html:11
+msgid "Create"
+msgstr "Create"
 
 #: .\templates\pages\index.html:15
 msgid "Welcome dear user!"

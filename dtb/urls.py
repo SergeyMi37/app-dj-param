@@ -34,10 +34,10 @@ from django.conf.urls import include, url
 
 admin.autodiscover()
 
-i18n_urls = (
-    #url(r'^admin/', include(admin.site.urls)),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-)
+#i18n_urls = (
+#    #url(r'^admin/', include(admin.site.urls)),
+#    url(r'^i18n/', include('django.conf.urls.i18n')),
+#)
 
 
 urlpatterns = [
@@ -62,6 +62,11 @@ urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url='/static/apptools-admin-hammer.png')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns.extend(i18n_patterns(*i18n_urls, prefix_default_language=False))
+urlpatterns += [
+    path(r'set-language/', views.set_language, name='set_language'),
+]
+
+
+#urlpatterns.extend(i18n_patterns(*i18n_urls, prefix_default_language=False))
 #urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
 
