@@ -1,41 +1,5 @@
 [
 {
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$260000$W52iGSnSLyo813qud4Povb$EuGqGkUnaxZOgMGBWiSGl4rDu31AELyPZibfqagyUSM=",
-    "last_login": "2023-08-30T09:16:04.723Z",
-    "is_superuser": true,
-    "username": "adm",
-    "first_name": "",
-    "last_name": "",
-    "email": "adm@localhost.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2023-08-24T16:39:11.568Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 2,
-  "fields": {
-    "password": "pbkdf2_sha256$260000$JiTe5LMHLkdjEztnWlD7q6$J/h5L46CXuhvu62qGyPvqgXInIOU3KA2BpIikwRd1ok=",
-    "last_login": "2023-08-24T08:34:42.993Z",
-    "is_superuser": false,
-    "username": "aaa",
-    "first_name": "",
-    "last_name": "",
-    "email": "MIKHAYLENKO@yandex.ru",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2023-08-24T08:10:06.343Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
   "model": "appmsw.param",
   "pk": 24,
   "fields": {
@@ -108,6 +72,16 @@
     "user": 1,
     "public": true,
     "enabled": true
+  }
+},
+{
+  "model": "appmsw.comment",
+  "pk": 13,
+  "fields": {
+    "text": "test",
+    "creation_date": "2023-08-30T12:46:05.279Z",
+    "author": 1,
+    "param": 25
   }
 }
 ]
