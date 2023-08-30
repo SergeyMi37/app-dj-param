@@ -11,7 +11,8 @@ RUN pip install --upgrade pip
 #RUN pip install wheel
 #RUN pip install apptools/api/intersystems_irispython-3.2.0-py3-none-any.whl
 
-RUN apt-get update && apt-get install -y wget \ apt-get install -y gettext
+RUN apt-get update && apt-get install -y wget && \
+ apt-get install -y gettext
 
 RUN wget --continue https://github.com/intersystems-community/iris-driver-distribution/raw/main/DB-API/intersystems_irispython-3.2.0-py3-none-any.whl && \
     pip install intersystems_irispython-3.2.0-py3-none-any.whl && \

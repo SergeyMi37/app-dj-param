@@ -9,15 +9,15 @@ class ParamForm(ModelForm):
     class Meta:
         model = Param
         # Описываем поля, которые будем заполнять в форме
-        fields = ['name', 'paropt', 'public','code']
+        fields = ['name', 'desc','category', 'paropt', 'enabled', 'public','code']
         widgets = {
             'name': TextInput(attrs={"placeholder": _('name-param'), "class": "blue"}),
             'code': Textarea(attrs={"placeholder": _('code-param'),'rows':13, 'cols':80}),
         }
         labels = {
             'name': '',
-            'paropt': '',
-            'code': ''
+            'paropt': 'type',
+            'code': 'json'
         }
 
 
