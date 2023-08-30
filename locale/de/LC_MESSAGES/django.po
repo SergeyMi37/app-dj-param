@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 10:17+0300\n"
+"POT-Creation-Date: 2023-08-30 11:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,35 +54,35 @@ msgstr "Parameter anzeigen"
 msgid "My parameters"
 msgstr "Meine Parameter"
 
-#: .\templates\inc\inc-header.html:18 .\templates\pages\index.html:22
+#: .\templates\inc\inc-header.html:19 .\templates\pages\index.html:22
 msgid "Add parameter"
 msgstr "Parameter hinzufügen"
 
-#: .\templates\inc\inc-header.html:23
+#: .\templates\inc\inc-header.html:25
 msgid "See all parameters"
 msgstr "Alle Parameter anzeigen"
 
-#: .\templates\inc\inc-header.html:29
+#: .\templates\inc\inc-header.html:32
 msgid "See only my parameters"
 msgstr "Sehen Sie nur meine Parameter"
 
-#: .\templates\inc\inc-header.html:36
+#: .\templates\inc\inc-header.html:40
 msgid "Username"
 msgstr "Nutzername"
 
-#: .\templates\inc\inc-header.html:38
+#: .\templates\inc\inc-header.html:42
 msgid "Go to admin panel"
 msgstr "Gehen Sie zum Admin-Bereich"
 
-#: .\templates\inc\inc-header.html:43
+#: .\templates\inc\inc-header.html:48
 msgid "logout"
 msgstr "Ausloggen"
 
-#: .\templates\inc\inc-header.html:55
+#: .\templates\inc\inc-header.html:61
 msgid "login"
 msgstr "Anmeldung"
 
-#: .\templates\inc\inc-header.html:72
+#: .\templates\inc\inc-header.html:78
 msgid "Change"
 msgstr "Ändern"
 
@@ -137,3 +137,7 @@ msgstr "Möglichkeit"
 #: .\templates\pages\view_params.html:52
 msgid "Total parameters:"
 msgstr "Gesamtparameter:"
+
+# ....
+#~ msgid "UnknownUser"
+#~ msgstr "UnknownUser"

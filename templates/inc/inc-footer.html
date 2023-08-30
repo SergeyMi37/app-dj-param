@@ -1,6 +1,21 @@
 <footer class="footer mt-auto py-3">
     <div class="container">
     <span class="text-muted">&copy; MSW, {% now "Y" %}. <br>
-       <a target="_blank" href="https://github.com/SergeyMi37/apptools-django">Apptools-Django</a> </span>
+      <a target="_blank" href="https://github.com/SergeyMi37/app-dj-param">Apptools-Django</a> </span>
+     {% if iris_stat %}
+      <span class="text-muted">Intersystems IRIS: 
+        <a target="_blank" href="/iris_info/">Info</a> </span>
+      <span class="text-muted">Telegram bot: 
+          <a target="_blank" href="/iris_info/">Info</a> </span>
+  
+        <ul >
+            {% for enum in iris_stat %}
+                <li class="alert alert" role="alert">
+                    {{ enum.name }}
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+      {% endif %}
     </div>
 </footer>

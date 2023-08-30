@@ -25,11 +25,14 @@ python manage.py dumpdata --exclude auth.permission --exclude contenttypes --ind
 python manage.py loaddata db-all.json
 
 # https://vivazzi.pro/ru/it/translate-django/
+# https://egorovegor.ru/django-multiple-language-support/
 mkdir locale
 django-admin makemessages -l ru -i dtb_venv -i src
 django-admin makemessages -l en -i dtb_venv -i src
 django-admin makemessages -a -i dtb_venv -i src # update
 django-admin compilemessages -i dtb_venv -i src
+
+
 ## docker ------------------------------------------------------------------
 ### stoped and clean all containers
 docker stop $(docker ps -a -q) &&  docker rm $(docker ps -a -q) && docker system prune -f

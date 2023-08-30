@@ -11,6 +11,7 @@
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            &nbsp;
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="form-inline">
@@ -18,11 +19,13 @@
                             {% trans 'Add parameter' %}
                         </a>
                     </li>
+                    &nbsp;
                     <li class="form-inline">
                         <a class="btn btn-outline-info" href="{% url 'param-list' %}">
                             {% trans 'See all parameters' %}
                         </a>
                     </li>
+                    &nbsp;
                     {% if request.user.is_authenticated %}
                     <li class="form-inline">
                         <a class="btn btn-outline-info" href="{% url 'param-my' %}">
@@ -32,16 +35,19 @@
                     {% endif %}
                 </ul>
             </div>
+            &nbsp;
             {% if request.user.is_authenticated %}
                 <span style="color: white">{% trans 'Username' %}:     
                 {% if request.user.is_superuser %}
                     <a href="/tgadmin/" title="{% trans 'Go to admin panel' %}"> {{ request.user.username }} </a>
                 {% else %}
+                &nbsp;
                     {{ request.user.username }}
                 {% endif %}
                 </span> &nbsp;&nbsp;&nbsp;
                 <div><a href="{% url 'logout' %}"> {% trans 'logout' %} </a></div>
             {% else %}
+            &nbsp;
                 <form method="post" action="{% url 'login' %}">{% csrf_token %}
                     <input name="username" type="text" placeholder="username">
                     <input name="password" type="password" placeholder="password">
@@ -56,9 +62,9 @@
                 </form>
                 <a href="{% url 'register' %}">register</a>
             {% endif %}
-
+            {% if request.user.is_authenticated %}
            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                
                 <select name="lang" onchange="document.getElementById('appSubmit2').click();">
                     {% get_current_language as LANGUAGE_CODE %}
                     {% get_available_languages as LANGUAGES %}
@@ -71,7 +77,7 @@
                 </select>
                 <input id="appSubmit2" type="submit" style="display: none" value="{% trans 'Change' %}" />
             </form>
-
+            {% endif %}
         </div>
     </nav>
 </header>

@@ -43,7 +43,7 @@
                             </td>
                             <td>{{ param.creation_date }}</td>
                             <td>{{ param.lang }}</td>
-                            <td>{{ param.user | is_empty:"Аноним" }}</td>
+                            <td>{{ param.user | is_empty:"UnknownUser" }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
