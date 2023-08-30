@@ -62,6 +62,7 @@
                 </form>
                 <a href="{% url 'register' %}">register</a>
             {% endif %}
+            &nbsp;
             {% if request.user.is_authenticated %}
            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                 
@@ -70,8 +71,8 @@
                     {% get_available_languages as LANGUAGES %}
                     {% get_language_info_list for LANGUAGES as languages %}
                     {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
+                        <option title="{{ language.name_local }} " value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                            {{ language.code }}
                         </option>
                     {% endfor %}
                 </select>

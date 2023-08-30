@@ -45,7 +45,11 @@ urlpatterns = [
     path('tgadmin/', admin.site.urls,name="tgadmin"),
     path('__debug__/', include(debug_toolbar.urls)),
     path('info/', views.index, name="index"),
-    path('iris_info/', views.irisinfo, name="irisinfo"),
+
+    path('iris_info/', views.iris_info, name="iris_info"),
+    path('iris_zts/', views.iris_zts, name="iris_zts"),
+    path('iris_alerts/', views.iris_alerts, name="iris_alerts"),
+    path('iris_ss/', views.iris_ss, name="iris_ss"),
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
     
     path('', views.index_page, name='home'),

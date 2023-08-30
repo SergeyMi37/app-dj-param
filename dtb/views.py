@@ -24,9 +24,17 @@ def process_telegram_event(update_json):
 def index(request):
     return JsonResponse({"ok": "wellcome"})
 
-def irisinfo(request):
-    return JsonResponse({"iris_info": " "+str(classMethod("apptools.core.telebot", "TS", "Info"))+" "})
-    #return JsonResponse({"error": "sup --- hacker"})
+def iris_info(request):
+    return JsonResponse({"iris_zts": str(classMethod("apptools.core.telebot", "TS", "Info"))})
+
+def iris_zts(request):
+    return JsonResponse({"iris_zts": str(classMethod("apptools.core.telebot", "TS", "Info"))})
+
+def iris_ss(request):
+    return JsonResponse({"iris_ss": str(classMethod("apptools.core.telebot", "SS", "Info"))})
+
+def iris_alerts(request):
+    return JsonResponse({"iris_alerts": str(classMethod("apptools.core.telebot", "Alerts", "Info"))})
 
 class TelegramBotWebhookView(View):
     # WARNING: if fail - Telegram webhook will be delivered again.
