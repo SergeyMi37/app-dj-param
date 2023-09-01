@@ -102,7 +102,7 @@ ClassMethod SendEmail(supportemail = "", subj = "", msg = "", file = "") As %Sta
 			s path=$p(file,$$$slash,1,*-1)
 			s file=$lb($p(file,$$$slash,1,*-1)_$$$slash,$p(file,$$$slash,*))
 		}
-		set sc=##class(apptools.core.net).SendMail($$$EMAILSERVERIP,$$$EMAILSERVERPORT, 0, 0, "", authFrom, authFromPass, authFrom, email_","_supportemail, subj, text,.file)
+		set sc=##class(apptools.core.net).SendMail($$$EMAILSERVERIP,$$$EMAILSERVERPORT, 0, 0, "", authFrom, authFromPass, authFrom, email, subj, text,.file)
 		;set ^logMSW($i(^logMSW))=$lb(sc,$$$EMAILSERVERIP,$$$EMAILSERVERPORT, 0, 0, "", authFrom, authFromPass, authFrom, email_","_supportemail, subj)
 		if 'sc {
 			w !,"Error "_$System.Status.GetErrorText(sc) 

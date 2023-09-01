@@ -2,10 +2,35 @@
 Class apptools.core.telebot [ Abstract ]
 {
 
+/// TimeStamp
 ClassMethod TS(val = "") As %String
 {
-	set ret=$zts
-	quit $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)_" "_ret_" --- "_$zu(110)_" "_$zv
+	quit $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)
+}
+
+/// Alerts Systems
+/// do ##class(apptools.core.telebot).Alerts(,.json)
+ClassMethod Alerts(json = "") As %String
+{
+	do ##class(apptools.core.rest).GetAlertsSys(,.json,0)
+	quit ##class(apptools.util.json).ZPretty(json,"","")
+}
+
+/// Status Systems
+ClassMethod SS(js = "") As %String
+{
+	set js={}
+	quit $zu(110)_" "_$zv
+}
+
+/// Status Systems
+ClassMethod GetFooter(js = "") As %String
+{
+	set js={}
+	;set js.ver=$zv
+	set js.host=$zu(110)_"("_##class(apptools.core.net).GetIP()_")"
+	;do js.%ToJSON()	
+	q ##class(apptools.util.json).ZPretty(js,"","")
 }
 
 ClassMethod GetMe(botId) As %DynamicObject

@@ -531,7 +531,7 @@ ClassMethod getProductions(day = "1") As %Status
 
 /// do ##class(%SYS.System).WriteToConsoleLog("InterSystems Interoperability Test",,3)
 /// do ##class(apptools.core.rest).GetAlertsSys(,.json)
-ClassMethod GetAlertsSys(count = 10, ByRef sys) As %Status
+ClassMethod GetAlertsSys(count = 10, ByRef sys, write = 1) As %Status
 {
 	do ##class(%SYSTEM.Monitor).GetAlerts(,.str,.last)
 	set sys = {}
@@ -548,7 +548,7 @@ ClassMethod GetAlertsSys(count = 10, ByRef sys) As %Status
 		set alert.text=val
 		do sys.alerts.%Push(alert)
 	}
-	do sys.%ToJSON()
+	do:write sys.%ToJSON()
  quit $$$OK
 }
 
