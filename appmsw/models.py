@@ -21,11 +21,16 @@ class Param(models.Model):
     enabled=models.BooleanField(default=True)
 
     def __str__(self):
+        return f"Param: {self.name}, {self.desc}"
+ 
+    def __repr__(self):
         return f"Param: {self.name}, {self.code}, {self.user}"
-
 
 class Comment(models.Model):
    text = models.TextField(max_length=2000)
    creation_date = models.DateTimeField(auto_now=True)
    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
    param = models.ForeignKey(to=Param, on_delete=models.CASCADE, related_name='comments')
+
+   def __str__(self):
+        return f"Comment: {self.text}, {self.author}"

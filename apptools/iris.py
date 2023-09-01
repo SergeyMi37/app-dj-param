@@ -27,16 +27,12 @@ def classMethod(_class,_method, _arg):
 
 
     '''
-  root@f154e8ae5a9a:/code# python
 Python 3.8.10 (default, Jun 23 2021, 15:19:53)
-[GCC 8.3.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import irisnative
 >>> connection = irisnative.createConnection("a3011d1fe174", int(1972), "USER", "superuser", "SYS")
 >>> appiris = irisnative.createIris(connection)
 >>> nodeVal = str(appiris.classMethodValue("apptools.core.telebot", "TS", ""))
 >>> print(nodeVal)
-2023-08-17 06:44:29 66703,24269.988666423 --- a3011d1fe174 IRIS for UNIX (Ubuntu Server LTS for x86-64 Containers) 2023.2 (Build 227U) Mon Jul 31 2023 18:04:28 EDT
 >>>
     '''
