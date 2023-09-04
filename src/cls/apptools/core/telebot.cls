@@ -3,9 +3,9 @@ Class apptools.core.telebot [ Abstract ]
 {
 
 /// TimeStamp
-ClassMethod TS(val = "") As %String
+ClassMethod TS(user = "") As %String
 {
-	quit $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)
+	quit $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)_" "_$g(user)
 }
 
 /// Alerts Systems
@@ -23,14 +23,28 @@ ClassMethod SS(js = "") As %String
 	quit $zu(110)_" "_$zv
 }
 
-/// Status Systems
-ClassMethod GetFooter(js = "") As %String
+/// Get Info for Footer  //="AnonymousUser"
+ClassMethod GetFooter(user = "") As %String
 {
 	set js={}
-	;set js.ver=$zv
-	set js.host=$zu(110)_"("_##class(apptools.core.net).GetIP()_")"
-	;do js.%ToJSON()	
-	q ##class(apptools.util.json).ZPretty(js,"","")
+	set js.username=user
+	set js.ver=$p($zv,")",1)_")"
+	set js.version=$zv
+	if $p(user,",",2)'="True" quit ##class(apptools.util.json).ZPretty(js,"","")
+	
+	set ip=##class(apptools.core.net).GetIP()
+	set js.host=$zu(110)_"("_ip_")"
+	set url=##class(apptools.core.net).GetURI(.prop)
+	do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))	
+	set js.apps = []
+	set i=""
+	for { set i=$o(opt(i)) quit:i=""
+		set app={}
+		set app.name=opt(i,"TabName")
+		set app.url="http://"_ip_":"_prop("WebServerPort")_opt(i,"InFrameUrl")
+		do js.apps.%Push(app)
+	}
+	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
 ClassMethod GetMe(botId) As %DynamicObject
