@@ -24,25 +24,32 @@ ClassMethod SS(js = "") As %String
 }
 
 /// Get Info for Footer  //="AnonymousUser"
+/// w ##class(apptools.core.telebot).GetFooter("")
 ClassMethod GetFooter(user = "") As %String
 {
 	set js={}
-	set js.username=user
-	set js.ver=$p($zv,")",1)_")"
-	set js.version=$zv
-	if $p(user,",",2)'="True" quit ##class(apptools.util.json).ZPretty(js,"","")
-	
-	set ip=##class(apptools.core.net).GetIP()
-	set js.host=$zu(110)_"("_ip_")"
-	set url=##class(apptools.core.net).GetURI(.prop)
-	do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))	
-	set js.apps = []
-	set i=""
-	for { set i=$o(opt(i)) quit:i=""
-		set app={}
-		set app.name=opt(i,"TabName")
-		set app.url="http://"_ip_":"_prop("WebServerPort")_opt(i,"InFrameUrl")
-		do js.apps.%Push(app)
+		set js.status="Ok"
+	try {
+		set js.username=user
+		set js.ver=$p($zv,")",1)_")"
+		set js.version=$zv
+		if $p(user,",",2)'="True" quit
+		
+		set ip=##class(apptools.core.net).GetIP()
+		set js.host=$zu(110)_"("_ip_")"
+		set url=##class(apptools.core.net).GetURI(.prop)
+		do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))	
+		set js.apps = []
+		set i=""
+		for { set i=$o(opt(i)) quit:i=""
+			set app={}
+			set app.name=opt(i,"TabName")
+			set app.url="http://"_ip_":"_prop("WebServerPort")_opt(i,"InFrameUrl")
+			do js.apps.%Push(app)
+		}
+	}
+	catch e { 
+		set js.status="Error "_$ze
 	}
 	quit ##class(apptools.util.json).ZPretty(js,"","")
 }

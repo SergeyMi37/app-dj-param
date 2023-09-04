@@ -10,7 +10,7 @@ import dtb.settings
 from tgbot.dispatcher import dispatcher
 from tgbot.main import bot
 
-from apptools.iris import classMethod
+from apptools.iris import classMethod, Iris4Footer
 from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
@@ -78,11 +78,11 @@ def index_page(request):
         errors = []
     else:
         errors = ['password or username not correct']
-
+  
     context = {
         'pagename': _('Param Demo'),
         "errors": errors,
-        "iris_footer":json.loads(classMethod("apptools.core.telebot", "GetFooter", f"{request.user},{request.user.is_authenticated},{request.user.is_authenticated}")),
+        "iris_footer":json.loads(Iris4Footer(request.user)),
     }
 
     return render(request, 'pages/index.html', context)

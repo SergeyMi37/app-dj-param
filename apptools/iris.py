@@ -22,9 +22,19 @@ def classMethod(_class,_method, _arg):
         #nodeVal = str(appiris.classMethodValue("apptools.core.telebot", "TS", ""))
         #print(myIris.get("Test"))
     except:
-        _val = 'FAIL Iris connection'
+        #_val = f'{"status":"FAIL Iris connection {ISC_Host}, {ISC_Port}, {ISC_Namespace}, {ISC_Username}, {ISC_Password}"}'
+        _val = '{"status":"FAIL Iris connection "}'
     return _val
 
+def Iris4Footer(user):
+    try:
+        _args=f"{user},{user.is_authenticated},{user.is_authenticated}"
+        print("----------",_args)
+        _val=classMethod("apptools.core.telebot", "GetFooter", _args)
+        print("----------",_val)
+    except:
+        _val = 'Error Iris4Footer :'+str(user)
+    return _val
 
     '''
 Python 3.8.10 (default, Jun 23 2021, 15:19:53)
