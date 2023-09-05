@@ -19,21 +19,19 @@ def classMethod(_class,_method, _arg):
         iris_native = irisnative.createIris(connection)
         appiris = irisnative.createIris(connection)
         _val = str(appiris.classMethodValue(_class, _method, _arg))
-        #nodeVal = str(appiris.classMethodValue("apptools.core.telebot", "TS", ""))
-        #print(myIris.get("Test"))
-    except:
-        #_val = f'{"status":"FAIL Iris connection {ISC_Host}, {ISC_Port}, {ISC_Namespace}, {ISC_Username}, {ISC_Password}"}'
-        _val = '{"status":"FAIL Iris connection "}'
+    except Exception as err:
+        print("-err-cm--------",err)
+        _val = "{"+ f'"status":"Error FAIL Iris connection {err}"' +"}"
     return _val
 
-def Iris4Footer(user):
+def classMethodFooter(user):
     try:
         _args=f"{user},{user.is_authenticated},{user.is_authenticated}"
-        print("----------",_args)
         _val=classMethod("apptools.core.telebot", "GetFooter", _args)
-        print("----------",_val)
-    except:
-        _val = 'Error Iris4Footer :'+str(user)
+    except Exception as err:
+        print("-err-fo------args--",_args)
+        print("-err-fo--------",err)
+        _val = "{"+ f"'status':'Error Iris4Footer :{err}" +"}"
     return _val
 
     '''
