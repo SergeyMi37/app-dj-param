@@ -25,20 +25,17 @@ def index(request):
     return JsonResponse({"ok": "wellcome"})
 
 def iris_info(request):
-    return JsonResponse({"iris_info": str(classMethod("apptools.core.telebot", "TS", 
-        f"{request.user},{request.user.is_authenticated},{request.user.is_authenticated}"))})
+    return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "TS","")))
 
 def iris_zts(request):
-    return JsonResponse({"iris_zts": str(classMethod("apptools.core.telebot", "TS",
-        f"{request.user},{request.user.is_authenticated},{request.user.is_authenticated}"))})
+    return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "TS","")))
 
 def iris_ss(request):
-    return JsonResponse({"iris_ss": str(classMethod("apptools.core.telebot", "SS", 
-        f"{request.user},{request.user.is_authenticated},{request.user.is_authenticated}"))})
+    return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "SS","")))
 
 def iris_alerts(request):
-    return JsonResponse({"iris_alerts": str(classMethod("apptools.core.telebot", "Alerts",
-        f"{request.user},{request.user.is_authenticated},{request.user.is_authenticated}"))})
+    return JsonResponse(json.loads(classMethod(request, "apptools.core.telebot", "Alerts" ,"")))
+    
 
 class TelegramBotWebhookView(View):
     # WARNING: if fail - Telegram webhook will be delivered again.
@@ -85,7 +82,7 @@ def index_page(request):
     context = {
         'pagename': _('Param Demo'),
         "errors": errors,
-        "iris_footer":json.loads(classMethodFooter(request.user)),
+        "iris_footer":json.loads(classMethodFooter(request)),
     }
 
     return render(request, 'pages/index.html', context)
@@ -104,7 +101,7 @@ def add_param_page(request):
         form = ParamForm()
         context = {
             'pagename': _('Adding a new parameter'),
-            "iris_footer":json.loads(classMethodFooter(request.user)),
+            "iris_footer":json.loads(classMethodFooter(request)),
             'form': form
         }
         return render(request, 'pages/add_param.html', context)
@@ -116,7 +113,7 @@ def param_detail(request, param_id):
     comments = param.comments.all()
     context = {
        'pagename': _('Options Page'),
-       "iris_footer":json.loads(classMethodFooter(request.user)),
+       "iris_footer":json.loads(classMethodFooter(request)),
         "param": param,
         "comments": comments,
         "comment_form": comment_form,
@@ -146,7 +143,7 @@ def params_page(request,my=False):
         params = params.filter(name__icontains=param_context) | params.filter(code__icontains=param_context)
     count=params.count()
     context = {
-        "iris_footer":json.loads(classMethodFooter(request.user)),
+        "iris_footer":json.loads(classMethodFooter(request)),
         'pagename': pagename,
         'params': params,
         'count':count
@@ -159,7 +156,7 @@ def params_my(request):
     params = params = Param.objects.filter(user=request.user)
     context = {
         'pagename': _('My parameters'),
-         "iris_footer":json.loads(classMethodFooter(request.user)),
+         "iris_footer":json.loads(classMethodFooter(request)),
         'params': params
     }
     return render(request, 'pages/view_params.html', context)

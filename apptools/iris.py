@@ -1,6 +1,7 @@
 import irisnative
 import os
-
+from django.conf import settings
+from dtb.settings import DEBUG
 # For Docker
 #ISC_Host=iris
 #ISC_Port=1972
@@ -13,23 +14,26 @@ ISC_Username = os.getenv("ISC_Username")
 ISC_Password = os.getenv("ISC_Password")
 ISC_Namespace = os.getenv("ISC_Namespace")
 
-def classMethod(_class,_method, _arg):
+def classMethod(request,_class,_method, _arg):
     try:
+        _args=f"{request.user}|{request.user.is_authenticated}|{request.user.is_authenticated}|{request.build_absolute_uri()}|{settings.BASE_DIR}"
         connection = irisnative.createConnection(ISC_Host, int(ISC_Port), ISC_Namespace, ISC_Username, ISC_Password)
-        iris_native = irisnative.createIris(connection)
+        #iris_native = irisnative.createIris(connection)
         appiris = irisnative.createIris(connection)
-        _val = str(appiris.classMethodValue(_class, _method, _arg))
+        _val = str(appiris.classMethodValue(_class, _method, _args))
     except Exception as err:
         print("-err-cm--------",err)
         _val = "{"+ f'"status":"Error FAIL Iris connection {err}"' +"}"
     return _val
 
-def classMethodFooter(user):
+def classMethodFooter(request):
+    if DEBUG:print('-uri--',request.build_absolute_uri())
     try:
-        _args=f"{user},{user.is_authenticated},{user.is_authenticated}"
-        _val=classMethod("apptools.core.telebot", "GetFooter", _args)
+        #_args=f"{request.user}|{request.user.is_authenticated}|{request.user.is_authenticated}|{request.build_absolute_uri()}|{settings.BASE_DIR}"
+        _val=classMethod(request,"apptools.core.telebot", "GetFooter", "")
+        #if DEBUG:print('-ret_val-----',_val)
     except Exception as err:
-        print("-err-fo------args--",_args)
+        #print("-err-fo------args--",_args)
         print("-err-fo--------",err)
         _val = "{"+ f"'status':'Error Iris4Footer :{err}" +"}"
     return _val
