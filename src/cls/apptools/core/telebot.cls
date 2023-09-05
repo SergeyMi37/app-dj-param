@@ -7,9 +7,9 @@ ClassMethod GetResp(arg = "") As %String
 {
 	set js={}
 	set js.status="ok"
-	set js.instance = $P($ZU(86),"*",2)
+	set js.instance = $ZU(86)
 	set js.version=$zv
-	set js.arg={}.%FromJSON(arg)
+	set js.django={}.%FromJSON(arg)
 	quit js
 }
 
@@ -45,21 +45,22 @@ ClassMethod GetFooter(arg = "", js) As %String
 {
 	set js=..GetResp(arg)
 	try {
-		if 'js.arg.authenticated quit 
+		if 'js.django.authenticated quit 
 		do ##class(apptools.core.net).GetURI(.prop)
 		do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))	
-		set ip=##class(apptools.core.net).GetIP()
-		set js.ip=ip
+		;set ip=##class(apptools.core.net).GetIP()
+		;set js.ip=ip
 		set js.host=$zu(110)
 		set js.webport=$g(prop("WebServerPort"))
 		set js.apps = []
-		set uri=js.arg.uri ;request.build_absolute_uri()
-		if js.arg.irishost="iris",js.arg.irisport="1972",##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
-			//ISC_Host=iris
-			set uri=uri_":"_$p($p(txt,":52773")," ",*)
+		set uri=js.django.uri ;request.build_absolute_uri()
+		if js.django.irishost="iris",js.django.irisport="1972",##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
+			set port=$p($p(txt,":52773")," ",*)
+			if port="" set port=52773
+			set uri=$p(uri,":",1,2)_":"_port
 		}
 		else {
-			set uri="http://"_ip_":"_prop("WebServerPort")
+			set uri=$p(uri,":",1,2)_":"_prop("WebServerPort")
 		}
 		set i=""
 		for { set i=$o(opt(i)) quit:i=""

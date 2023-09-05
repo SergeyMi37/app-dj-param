@@ -4,10 +4,13 @@
       <a target="_blank" href="https://github.com/SergeyMi37/app-dj-param">Apptools-Django</a> </span>
      {% if iris_footer %}
         <!--{{iris_footer}}-->
-      {% if iris_footer.status != 'ok' %}
+        <span class="text-muted"> |  
+          <a target="_blank" href="/iris_info/">iris_info</a> 
+        </span>
+        {% if iris_footer.status != 'ok' %}
         {{iris_footer.status}}
       {% endif %}
-      <span class="text-muted">: 
+      <span class="text-muted"> 
         <a target="_blank" href="{{ iris_footer.url }}> {{ iris_footer.ver }} </a> </span>
         {% for enum in iris_footer.apps %}
           <span class="text-muted"> |  

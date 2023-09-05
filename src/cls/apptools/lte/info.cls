@@ -191,8 +191,8 @@ ClassMethod GetAllApps(opt) As %Status
 ClassMethod GetTopMenuFavorites(opt, lb) As %Status
 {
 	do ..GetAppsOpenWinPanel(.opt,"menu-top-apptools", "/apptools/apptools.core.LogInfo.cls", "admin-panel", lb)
-	if $$EXIST^%R("%ZAPM.ext.zpm.1") do ..GetAppsOpenWinPanel(.opt,"menu-top-zapm", "/apptoolsrest/a/zapm", "zapm", lb)
-	do ..GetAppsOpenWinPanel(.opt,"menu-top-zinfo", "/apptoolsrest/a/info", "info", lb)
+	if $$EXIST^%R("%ZAPM.ext.zpm.1") do ..GetAppsOpenWinPanel(.opt,"menu-top-zapm", "/apptoolsrest/a/zapm", "app-zapm", lb)
+	do ..GetAppsOpenWinPanel(.opt,"menu-top-zinfo", "/apptoolsrest/a/info", "app-info", lb)
 	do ##class(apptools.lte.resources).GetZpmNamespaces(.zpmList)
 	for name="webterminal:/terminal/","devbox:/devbox/DevBox.Index.cls" {
 		if $D(zpmList($p(name,":"))) {
