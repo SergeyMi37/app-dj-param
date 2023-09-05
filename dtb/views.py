@@ -28,7 +28,7 @@ def iris_info(request):
     return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "TS","")))
 
 def iris_zts(request):
-    return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "TS","")))
+    return JsonResponse(json.loads(classMethod("","apptools.core.telebot", "TS","")))
 
 def iris_ss(request):
     return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "SS","")))

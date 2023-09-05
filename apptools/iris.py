@@ -2,6 +2,7 @@ import irisnative
 import os
 from django.conf import settings
 from dtb.settings import DEBUG
+import json
 # For Docker
 #ISC_Host=iris
 #ISC_Port=1972
@@ -16,25 +17,36 @@ ISC_Namespace = os.getenv("ISC_Namespace")
 
 def classMethod(request,_class,_method, _arg):
     try:
-        _args=f"{request.user}|{request.user.is_authenticated}|{request.user.is_authenticated}|{request.build_absolute_uri()}|{settings.BASE_DIR}"
+        if request=="":
+            _args={
+                "basedir":str(settings.BASE_DIR),
+                "irishost":ISC_Host,
+                "irisport":str(ISC_Port)
+            }
+        else:
+            _args={
+                "user": str(request.user),
+                "authenticated":request.user.is_authenticated,
+                "superuser":request.user.is_superuser,
+                "uri":request.build_absolute_uri(),
+                "basedir":str(settings.BASE_DIR),
+                "irishost":ISC_Host,
+                "irisport":str(ISC_Port)
+            }
         connection = irisnative.createConnection(ISC_Host, int(ISC_Port), ISC_Namespace, ISC_Username, ISC_Password)
-        #iris_native = irisnative.createIris(connection)
         appiris = irisnative.createIris(connection)
-        _val = str(appiris.classMethodValue(_class, _method, _args))
+        _val = str(appiris.classMethodValue(_class, _method, json.dumps(_args)))
     except Exception as err:
-        print("-err-cm--------",err)
+        print("---err-classMethod--------",err)
         _val = "{"+ f'"status":"Error FAIL Iris connection {err}"' +"}"
     return _val
 
 def classMethodFooter(request):
-    if DEBUG:print('-uri--',request.build_absolute_uri())
     try:
-        #_args=f"{request.user}|{request.user.is_authenticated}|{request.user.is_authenticated}|{request.build_absolute_uri()}|{settings.BASE_DIR}"
         _val=classMethod(request,"apptools.core.telebot", "GetFooter", "")
-        #if DEBUG:print('-ret_val-----',_val)
+        if DEBUG:print('---return-classMethodFooter-----',_val)
     except Exception as err:
-        #print("-err-fo------args--",_args)
-        print("-err-fo--------",err)
+        if DEBUG:print("---err-fo--------",err)
         _val = "{"+ f"'status':'Error Iris4Footer :{err}" +"}"
     return _val
 
