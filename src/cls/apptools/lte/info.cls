@@ -187,7 +187,7 @@ ClassMethod GetAllApps(opt) As %Status
 }
 
 /// Get for Top menu faforite ZPM modules interface
-/// do ##class(apptools.lte.info).GetTopMenuFavorites(.opt)
+/// do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))
 ClassMethod GetTopMenuFavorites(opt, lb) As %Status
 {
 	do ..GetAppsOpenWinPanel(.opt,"menu-top-apptools", "/apptools/apptools.core.LogInfo.cls", "admin-panel", lb)

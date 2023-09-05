@@ -30,6 +30,7 @@ Application tools for technical support and DBMS administrator use Django
 	<Resource Name="apptools.Tabs.PKG"/>
 	<Resource Name="apptools.python.PKG"/>
         <Resource Name="apptools.Uikit.PKG"/>
+        <Resource Name="apptools.util.PKG"/>
 	<Resource Name="appcachemsg.GBL"/>
 <CSPApplication 
             SourcePath="/src/csp"

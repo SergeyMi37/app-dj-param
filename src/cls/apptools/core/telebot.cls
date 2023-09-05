@@ -2,54 +2,75 @@
 Class apptools.core.telebot [ Abstract ]
 {
 
-/// TimeStamp
-ClassMethod TS(user = "") As %String
+/// Get base responce
+ClassMethod GetResp(arg = "") As %String
 {
-	quit $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)_" "_$g(user)
+	set js={}
+	set js.status="ok"
+	set js.instance = $P($ZU(86),"*",2)
+	set js.version=$zv
+	set js.arg={}.%FromJSON(arg)
+	quit js
+}
+
+/// TimeStamp
+/// w ##class(apptools.core.telebot).TS(,.json)
+ClassMethod TS(arg = "", js) As %String
+{
+	set js=..GetResp(arg)
+	set js.datetime= $ZDT($NOW()+0,3,1,3)_" "_##class(apptools.core.type).GetValidZT($h)
+	set js.zts= $zts
+	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
 /// Alerts Systems
-/// do ##class(apptools.core.telebot).Alerts(,.json)
-ClassMethod Alerts(json = "") As %String
+/// w ##class(apptools.core.telebot).Alerts(,.json)
+ClassMethod Alerts(arg = "", js = "") As %String
 {
-	do ##class(apptools.core.rest).GetAlertsSys(,.json,0)
-	quit ##class(apptools.util.json).ZPretty(json,"","")
+	set js=..GetResp(arg)
+	do ##class(apptools.core.rest).GetAlertsSys(,.js,0)
+	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
 /// Status Systems
-ClassMethod SS(js = "") As %String
+ClassMethod SS(arg = "", js) As %String
 {
-	set js={}
-	quit $zu(110)_" "_$zv
+	set js=..GetResp(arg)
+	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
 /// Get Info for Footer  //="AnonymousUser"
 /// w ##class(apptools.core.telebot).GetFooter("")
-ClassMethod GetFooter(user = "") As %String
+ClassMethod GetFooter(arg = "", js) As %String
 {
-	set js={}
-		set js.status="Ok"
+	set js=..GetResp(arg)
 	try {
-		set js.username=user
-		set js.ver=$p($zv,")",1)_")"
-		set js.version=$zv
-		if $p(user,",",2)'="True" quit
-		
-		set ip=##class(apptools.core.net).GetIP()
-		set js.host=$zu(110)_"("_ip_")"
-		set url=##class(apptools.core.net).GetURI(.prop)
+		if 'js.arg.authenticated quit 
+		do ##class(apptools.core.net).GetURI(.prop)
 		do ##class(apptools.lte.info).GetTopMenuFavorites(.opt,$lb("1","name"))	
+		set ip=##class(apptools.core.net).GetIP()
+		set js.ip=ip
+		set js.host=$zu(110)
+		set js.webport=$g(prop("WebServerPort"))
 		set js.apps = []
+		set uri=js.arg.uri ;request.build_absolute_uri()
+		if js.arg.irishost="iris",js.arg.irisport="1972",##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
+			//ISC_Host=iris
+			set uri=uri_":"_$p($p(txt,":52773")," ",*)
+		}
+		else {
+			set uri="http://"_ip_":"_prop("WebServerPort")
+		}
 		set i=""
 		for { set i=$o(opt(i)) quit:i=""
 			set app={}
 			set app.name=opt(i,"TabName")
-			set app.url="http://"_ip_":"_prop("WebServerPort")_opt(i,"InFrameUrl")
+			set app.url=uri_opt(i,"InFrameUrl")
 			do js.apps.%Push(app)
 		}
 	}
 	catch e { 
-		set js.status="Error "_$ze
+		set js.status="error "_$ze
 	}
 	quit ##class(apptools.util.json).ZPretty(js,"","")
 }

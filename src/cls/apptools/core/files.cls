@@ -175,9 +175,9 @@ ClassMethod OpenFile(file, time = 1, mode = "WNSK", code = "UTF8") As %Status
 
 /// Read file. if ##class(apptools.core.files).ReadFile("/irisdev/app/module.xml",.txt) write txt
 /// s f=##class(%File).%New("/irisdev/app/module.xml") if f.Open("RSU") {s t=f.Read() w !,t } else { w $System.Status.GetErrorText($g(%objlasterror)) } d f.%Close() k f
-ClassMethod ReadFile(filename = "/irisdev/app/module.xml", ByRef txt) As %Status
+ClassMethod ReadFile(filename = "/irisdev/app/module.xml", ByRef txt, mute = 0) As %Status
 {
-	set f=##class(%File).%New(filename) if f.Open("RSU") {s txt=f.Read() } else { w !,$System.Status.GetErrorText($g(%objlasterror)) quit $g(%objlasterror) } d f.%Close() quit $$$OK
+	set f=##class(%File).%New(filename) if f.Open("RSU") {s txt=f.Read() } else { write:'mute !,$System.Status.GetErrorText($g(%objlasterror)) quit $g(%objlasterror) } d f.%Close() quit $$$OK
 }
 
 /// To read a file and write to global 
