@@ -9,7 +9,7 @@ ClassMethod GetResp(arg = "") As %String
 	set js.status="ok"
 	set js.instance = $ZU(86)
 	set js.version=$zv
-	set js.django={}.%FromJSON(arg)
+	set:arg'="" js.django={}.%FromJSON(arg)   //"AnonymousUser"
 	quit js
 }
 
@@ -39,7 +39,7 @@ ClassMethod SS(arg = "", js) As %String
 	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
-/// Get Info for Footer  //="AnonymousUser"
+/// Get Info for Footer
 /// w ##class(apptools.core.telebot).GetFooter("")
 ClassMethod GetFooter(arg = "", js) As %String
 {
@@ -53,14 +53,14 @@ ClassMethod GetFooter(arg = "", js) As %String
 		set js.host=$zu(110)
 		set js.webport=$g(prop("WebServerPort"))
 		set js.apps = []
-		set uri=js.django.uri ;request.build_absolute_uri()
+		set uri=js.django.absoluteuri ;request.build_absolute_uri()
 		if js.django.irishost="iris",js.django.irisport="1972",##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
 			set port=$p($p(txt,":52773")," ",*)
 			if port="" set port=52773
 			set uri=$p(uri,":",1,2)_":"_port
 		}
-		else {
-			set uri=$p(uri,":",1,2)_":"_prop("WebServerPort")
+		elseif js.django.irishost'="iris" {
+			set uri="http://"_js.django.irishost_":"_prop("WebServerPort")
 		}
 		set i=""
 		for { set i=$o(opt(i)) quit:i=""
@@ -76,6 +76,21 @@ ClassMethod GetFooter(arg = "", js) As %String
 	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
+/// Get Info for Managment Portal
+/// w ##class(apptools.core.telebot).GetPortal("",.js)
+ClassMethod GetPortal(arg = "", js) As %String
+{
+	set js=..GetResp(arg)
+	try {
+		if 'js.django.authenticated quit 
+	}
+	catch e { 
+		set js.status="error "_$ze
+	}
+	quit ##class(apptools.util.json).ZPretty(js,"","")
+}
+
+/// Get info from telebot
 ClassMethod GetMe(botId) As %DynamicObject
 {
 	s ret=..ExecuteRequest(..GetRequestObj(), "getMe",botId)
