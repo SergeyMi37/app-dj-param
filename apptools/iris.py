@@ -28,7 +28,7 @@ def classMethod(request,_class,_method, _arg):
                 "user": str(request.user),
                 "authenticated":request.user.is_authenticated,
                 "superuser":request.user.is_superuser,
-                "uri":request.build_absolute_uri(),
+                "absoluteuri":request.build_absolute_uri(),
                 "basedir":str(settings.BASE_DIR),
                 "irishost":ISC_Host,
                 "irisport":str(ISC_Port)
@@ -44,12 +44,20 @@ def classMethod(request,_class,_method, _arg):
 def classMethodFooter(request):
     try:
         _val=classMethod(request,"apptools.core.telebot", "GetFooter", "")
-        if DEBUG:print('---return-classMethodFooter-----',_val)
+        if DEBUG:print('---return-classMethod Footer-----',_val)
     except Exception as err:
-        if DEBUG:print("---err-fo--------",err)
-        _val = "{"+ f"'status':'Error Iris4Footer :{err}" +"}"
+        if DEBUG:print("---err-footer--------",err)
+        _val = "{"+ f"'status':'Error Iris Footer :{err}" +"}"
     return _val
 
+def classMethodPortal(request,mp_list=""):
+    try:
+        _val=classMethod(request,"apptools.core.telebot", "GetPortal",mp_list)
+        if DEBUG:print('---return-classMethod Portal-----',_val)
+    except Exception as err:
+        if DEBUG:print("---err-portal--------",err)
+        _val = "{"+ f"'status':'Error Iris Portal :{err}" +"}"
+    return _val
     '''
 Python 3.8.10 (default, Jun 23 2021, 15:19:53)
 >>>

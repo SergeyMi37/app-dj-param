@@ -10,8 +10,16 @@ import dtb.settings
 from tgbot.dispatcher import dispatcher
 from tgbot.main import bot
 
-from apptools.iris import classMethod, classMethodFooter
+from apptools.iris import classMethod, classMethodFooter, classMethodPortal
 from django.utils.translation import ugettext as _
+###### Param
+from django.http import Http404,HttpResponseRedirect
+from django.shortcuts import render, redirect
+from appmsw.models import Param
+from appmsw.forms import ParamForm, UserRegistrationForm, CommentForm
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +31,29 @@ def process_telegram_event(update_json):
 
 def index(request):
     return JsonResponse({"ok": "wellcome"})
+
+
+def iris_mp(request):
+    context = {
+        'iris_portal': json.loads(classMethodPortal(request)),
+        'pagename': _('Management Portal'),
+        "iris_footer":json.loads(classMethodFooter(request)),
+    }
+    return render(request, 'pages/iris_mp.html', context)
+
+def iris_mp_list(request):
+    pagename=_('View list')
+ 
+    mp_context = request.GET.get('mp_context')
+    if mp_context:
+        pagename=pagename+" "+ mp_context
+    context = {
+        'pagename': pagename,
+        "iris_portal":json.loads(classMethodPortal(request,mp_context)),
+        "iris_footer":json.loads(classMethodFooter(request)),
+    }
+    return render(request, 'pages/iris_mp_list.html', context)
+
 
 def iris_info(request):
     return JsonResponse(json.loads(classMethod(request,"apptools.core.telebot", "TS","")))
@@ -55,15 +86,6 @@ class TelegramBotWebhookView(View):
     def get(self, request, *args, **kwargs):  # for debug
         return JsonResponse({"ok": "Get request received! But nothing done"})
 
-###### Param
-from django.http import Http404,HttpResponseRedirect
-from django.shortcuts import render, redirect
-from appmsw.models import Param
-from appmsw.forms import ParamForm, UserRegistrationForm, CommentForm
-from django.contrib import auth
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-
 @login_required
 def set_language(request):
     lang = request.POST.get('lang', 'en')
@@ -72,19 +94,36 @@ def set_language(request):
     response.set_cookie(dtb.settings.LANGUAGE_COOKIE_NAME, lang)
     return response
 
-
+#base  /  home
 def index_page(request):
     if request.user.is_authenticated:
         errors = []
     else:
         errors = ['password or username not correct']
-  
+    _foo=json.loads(classMethodFooter(request))
     context = {
         'pagename': _('Param Demo'),
         "errors": errors,
-        "iris_footer":json.loads(classMethodFooter(request)),
+        "iris_footer":_foo,
     }
+    #print("===",type(_foo),_foo)
+    if _foo.get("status","")=='ok':
+        return iris_mp(request)
+    else:
+        return param_index(request)
 
+@login_required
+def param_index(request):
+    if request.user.is_authenticated:
+        errors = []
+    else:
+        errors = ['password or username not correct']
+    _foo=json.loads(classMethodFooter(request))
+    context = {
+        'pagename': _('Param Demo'),
+        "errors": errors,
+        "iris_footer":_foo,
+    }
     return render(request, 'pages/index.html', context)
 
 

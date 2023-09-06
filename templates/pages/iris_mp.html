@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    {% load my_tags %}
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>{{ pagename }}</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p>{{iris_portal.version}}, 
+                <p>Instance: {% iris_piece iris_portal.instance "*" 1 %}, dir: {% iris_piece iris_portal.instance "*" 0 %} 
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"><h3>Process</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Process">{% trans 'Quantity' %}: {{ iris_portal.proc.count }}  </a> </span> 
+            </div>
+            <div class="col-sm-4"><h3>Namespaces</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Namespaces">{% trans 'Quantity' %}: {{ iris_portal.ns.count }}  </a> </span> 
+            </div>
+            <div class="col-sm-4"><h3>Database</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Databases">{% trans 'Quantity' %}: {{ iris_portal.db.count }}  </a> </span> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"><h3>Tasks</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.task.count }}  
+            </div>
+            <div class="col-sm-4"><h3>Products</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+            </div>
+            <div class="col-sm-4"><h3>Web Application</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"><h3>Users</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+            </div>
+            <div class="col-sm-4"><h3>Roles</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+            </div>
+            <div class="col-sm-4"><h3>View Messages Log</h3>
+                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -8,7 +8,11 @@
     <title>Parametr Demo</title>
 
     {% block style %}
+        {% if iris_portal %}
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'apptools-admin-hammer.png' %}"/>
+        {% else %}
         <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/logo-folder.png' %}"/>
+        {% endif %}
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <!-- Fontawessome -->

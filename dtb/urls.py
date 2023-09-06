@@ -41,24 +41,30 @@ admin.autodiscover()
 
 
 urlpatterns = [
+    path('', views.index_page, name='home'),
+    
     path('admin/', admin.site.urls),
     path('tgadmin/', admin.site.urls,name="tgadmin"),
     path('__debug__/', include(debug_toolbar.urls)),
     path('info/', views.index, name="index"),
 
+    path('iris_mp/', views.iris_mp, name="iris_portal"),
+    path('iris_mp_list/', views.iris_mp_list, name="iris_portal_list"),
     path('iris_info/', views.iris_info, name="iris_info"),
     path('iris_zts/', views.iris_zts, name="iris_zts"),
     path('iris_alerts/', views.iris_alerts, name="iris_alerts"),
     path('iris_ss/', views.iris_ss, name="iris_ss"),
+    
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
     
-    path('', views.index_page, name='home'),
+    path('param_index/', views.param_index, name='param-index'),
     path('params/add', views.add_param_page, name='param-add'),
     path('params/list', views.params_page, name='param-list'),
     path('params/my', views.params_page,{'my':True}, name='param-my'),
     path('param/<int:param_id>/', views.param_detail, name='param-detail'),
     path('param/<int:param_id>/delete', views.param_delete, name='param-delete'),
     path('comment/add', views.comment_add, name="comment_add"),
+    
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
     path('register/', views.registration, name='register'),
