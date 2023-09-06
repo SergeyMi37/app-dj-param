@@ -17,22 +17,17 @@ ISC_Namespace = os.getenv("ISC_Namespace")
 
 def classMethod(request,_class,_method, _arg):
     try:
-        if request=="":
-            _args={
-                "basedir":str(settings.BASE_DIR),
-                "irishost":ISC_Host,
-                "irisport":str(ISC_Port)
-            }
-        else:
-            _args={
-                "user": str(request.user),
-                "authenticated":request.user.is_authenticated,
-                "superuser":request.user.is_superuser,
-                "absoluteuri":request.build_absolute_uri(),
-                "basedir":str(settings.BASE_DIR),
-                "irishost":ISC_Host,
-                "irisport":str(ISC_Port)
-            }
+        _args={
+            "basedir":str(settings.BASE_DIR),
+            "irishost":ISC_Host,
+            "irisport":str(ISC_Port)
+        }
+        if request:
+            _args["user"]= str(request.user)
+            _args["authenticated"]=request.user.is_authenticated
+            _args["superuser"]=request.user.is_superuser
+            _args["absoluteuri"]=request.build_absolute_uri()
+            
         connection = irisnative.createConnection(ISC_Host, int(ISC_Port), ISC_Namespace, ISC_Username, ISC_Password)
         appiris = irisnative.createIris(connection)
         _val = str(appiris.classMethodValue(_class, _method, json.dumps(_args)))
@@ -44,7 +39,7 @@ def classMethod(request,_class,_method, _arg):
 def classMethodFooter(request):
     try:
         _val=classMethod(request,"apptools.core.telebot", "GetFooter", "")
-        if DEBUG:print('---return-classMethod Footer-----',_val)
+        #if DEBUG:print('---return-classMethod Footer-----',_val)
     except Exception as err:
         if DEBUG:print("---err-footer--------",err)
         _val = "{"+ f"'status':'Error Iris Footer :{err}" +"}"
