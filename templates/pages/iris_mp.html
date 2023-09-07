@@ -14,7 +14,10 @@
         <div class="row">
             <div class="col">
                 <p>{{iris_portal.version}}, 
-                <p>Instance:<b> {% iris_piece iris_portal.instance "*" 1 %}</b>, dir: <b>{% iris_piece iris_portal.instance "*" 0 %} </b>>
+                <p>Instance:<b> {% iris_piece iris_portal.instance "*" 1 %}</b>, dir: <b>{% iris_piece iris_portal.instance "*" 0 %} </b>
+                {% if iris_portal.status != 'ok' %} 
+                    <span style="color:red"> {{iris_portal.status}} </span>
+                {% endif %}     
                 <hr>
             </div>
         </div>
@@ -48,7 +51,8 @@
                 {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
             </div>
             <div class="col-sm-4"><h3>View Messages Log</h3>
-                {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Alerts"> {% trans 'Alerts' %}: {{ iris_portal.alerts.count }}  </a> </span> 
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Messages"> {% trans 'Messages' %}: {{ iris_portal.mess.count }}  </a> </span> 
             </div>
         </div>
     </div>

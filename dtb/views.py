@@ -45,8 +45,7 @@ def iris_mp_list(request):
     pagename=_('View list')
  
     mp_context = request.GET.get('mp_context')
-    if mp_context:
-        pagename=pagename+" "+ mp_context
+    if mp_context: pagename+=" "+ mp_context 
     context = {
         'pagename': pagename,
         "iris_portal":json.loads(classMethodPortal(request,mp_context)),
@@ -112,7 +111,7 @@ def index_page(request):
     else:
         return param_index(request)
 
-@login_required
+#@login_required
 def param_index(request):
     if request.user.is_authenticated:
         errors = []
@@ -240,9 +239,15 @@ def registration(request):
             return redirect('home')
         else:
             messages.error(request, 'Error updating your profile')
-            context = {'form': form}
+            context = {
+                'form': form,
+                "is_registr_form":"err"
+            }
             return render(request, 'pages/registration.html', context)
     elif request.method == "GET":  # Страницу с формой
         form = UserRegistrationForm()
-        context = {'form': form}
+        context = {
+            'form': form,
+            "is_registr_form":"ok"
+        }
         return render(request, 'pages/registration.html', context)

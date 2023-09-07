@@ -15,25 +15,29 @@ ISC_Username = os.getenv("ISC_Username")
 ISC_Password = os.getenv("ISC_Password")
 ISC_Namespace = os.getenv("ISC_Namespace")
 
-def classMethod(request,_class,_method, _arg):
+def classMethod(request,_class,_method, _arg=""):
     try:
         _args={
             "basedir":str(settings.BASE_DIR),
             "irishost":ISC_Host,
-            "irisport":str(ISC_Port)
+            "irisport":str(ISC_Port),
+            "arg":_arg,
         }
         if request:
             _args["user"]= str(request.user)
             _args["authenticated"]=request.user.is_authenticated
             _args["superuser"]=request.user.is_superuser
             _args["absoluteuri"]=request.build_absolute_uri()
-            
-        connection = irisnative.createConnection(ISC_Host, int(ISC_Port), ISC_Namespace, ISC_Username, ISC_Password)
-        appiris = irisnative.createIris(connection)
-        _val = str(appiris.classMethodValue(_class, _method, json.dumps(_args)))
+        
+        if ISC_Host=="":
+            return f'{{"status":"Error Iris Host is empty"}}'
+        else:
+            connection = irisnative.createConnection(ISC_Host, int(ISC_Port), ISC_Namespace, ISC_Username, ISC_Password)
+            appiris = irisnative.createIris(connection)
+            _val = str(appiris.classMethodValue(_class, _method, json.dumps(_args)))
     except Exception as err:
         print("---err-classMethod--------",err)
-        _val = "{"+ f'"status":"Error FAIL Iris connection {err}"' +"}"
+        _val = f'{{"status":"Error FAIL Iris connection {err}"}}'
     return _val
 
 def classMethodFooter(request):
@@ -42,7 +46,7 @@ def classMethodFooter(request):
         #if DEBUG:print('---return-classMethod Footer-----',_val)
     except Exception as err:
         if DEBUG:print("---err-footer--------",err)
-        _val = "{"+ f"'status':'Error Iris Footer :{err}" +"}"
+        _val = f"{{ 'status':'Error Iris Footer :{err}' }}"
     return _val
 
 def classMethodPortal(request,mp_list=""):
@@ -51,8 +55,9 @@ def classMethodPortal(request,mp_list=""):
         if DEBUG:print('---return-classMethod Portal-----',_val)
     except Exception as err:
         if DEBUG:print("---err-portal--------",err)
-        _val = "{"+ f"'status':'Error Iris Portal :{err}" +"}"
+        _val = f"{{ 'status':'Error Iris Portal :{err}' }}"
     return _val
+    
     '''
 Python 3.8.10 (default, Jun 23 2021, 15:19:53)
 >>>

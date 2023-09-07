@@ -28,15 +28,14 @@ Create virtual environment (optional)
 python3 -m venv dtb_venv
 source dtb_venv/bin/activate 
 # deactivate
-# source dtb_venv/Scripts/activate # for Windows
 ```
- For Windows `source venv_dj/Scripts/activate`
+For Windows `source venv_dj/Scripts/activate`
 
 Install all requirements:
 ```
 pip install -r requirements.txt
 ```
-Create .env file in root directory and copy-paste this or just run cp .env_example .env, don't forget to change telegram token:
+Create .env file in root directory and copy-paste this or just run `cp .env_example .env`, don't forget to change telegram token:
 ```
 DJANGO_DEBUG=True
 DATABASE_URL=sqlite:///db.sqlite3
@@ -51,9 +50,17 @@ Run migrations to setup SQLite database:
 python manage.py makemigrations
 python manage.py migrate
 ```
-Create superuser to get access to admin panel:
+Load test data
+```
+python manage.py loaddata db-test.json
+```
+Create a superuser `adm` with the password `demo` to get access to the admin panel:
 ```
 python manage.py createsuperuser --noinput --username adm --email adm@localhost.com # .env DJANGO_SUPERUSER_PASSWORD=demo
+```
+Compile multilingual dictionaries
+```
+django-admin compilemessages -i dtb_venv -i src 
 ```
 Run bot in polling mode:
 ```

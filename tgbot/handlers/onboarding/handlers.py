@@ -32,8 +32,8 @@ def secret_level(update: Update, context: CallbackContext) -> None:
         active_24=User.objects.filter(updated_at__gte=timezone.now() - datetime.timedelta(hours=24)).count()
     )
     _ret=json.loads(classMethod("","apptools.core.telebot", "TS", ""))
-    _irishost=_ret.get("irishost","wwww")
-    print(type(_ret),_ret)
+    _irishost=_ret["django"].get("irishost","undef")
+    #print(type(_ret),_ret)
     text=text+f"\n Base_dir: <b> {settings.BASE_DIR}\n {_irishost}</b>"
     
     context.bot.edit_message_text(

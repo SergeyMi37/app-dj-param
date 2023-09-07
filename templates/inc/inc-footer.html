@@ -2,16 +2,15 @@
     <div class="container">
     <span class="text-muted">&copy; MSW, {% now "Y" %}. <br>
       <a target="_blank" href="https://github.com/SergeyMi37/app-dj-param">Apptools-Django</a> </span>
-     {% if iris_footer %}
+      <span class="text-muted"> | <a href="/param_index/">Django-parameters</a> </span>
+
+      {% if iris_footer.status != 'ok' %} 
+        <span style="color:red"> {{iris_footer.status}} </span>
+      {% else %}   
         <!--{{iris_footer}}-->
-        <span class="text-muted"> | <a href="/param_index/">Django-parameters</a> </span>
         <span class="text-muted"> | <a href="/iris_mp/">Iris Portal</a> </span>
         <span class="text-muted"> | <a target="_blank" href="/iris_info/">iris_info</a> </span>
         <span class="text-muted"> | <a target="_blank" href="/iris_alerts/">iris_alerts</a> </span>
-        
-        <!--Output errors-->
-        {% if iris_footer.status != 'ok' %} {{iris_footer.status}}  {% endif %}
-
       <span class="text-muted"> 
         <a target="_blank" href="{{ iris_footer.url }}> {{ iris_footer.ver }} </a> </span>
         {% for enum in iris_footer.apps %}

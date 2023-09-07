@@ -100,7 +100,10 @@ do ##class(%DeepSee.Utils).%BuildCube("CubeName")
 do $System.OBJ.Export("po*.GBL","/irisdev/app/src/gbl/globals.xml",,.errors)
 zw errors
 ```
-
+## update code apptools-django application
+```
+USER>do ##class(apptools.core.code).exp("/iris-backup/apptools/apptools-django/src/","apptools.","apptools.M")
+```
 
 ## zpm --------------------------------------------------------------------
 ## Installed zpm short one line
