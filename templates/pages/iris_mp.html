@@ -22,8 +22,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4"><h3>Process</h3>
-                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Process">{% trans 'Quantity' %}: {{ iris_portal.proc.count }}  </a> </span> 
+            <div class="col-sm-4"><h3>View Messages Log</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Alerts"> {% trans 'Alerts' %}: {{ iris_portal.alerts.count }}  </a> </span> 
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Messages"> {% trans 'Messages' %}: {{ iris_portal.mess.count }}  </a> </span> 
             </div>
             <div class="col-sm-4"><h3>Namespaces</h3>
                 <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Namespaces">{% trans 'Quantity' %}: {{ iris_portal.ns.count }}  </a> </span> 
@@ -33,8 +34,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4"><h3>Tasks</h3>
-                {% trans 'Quantity' %}: {{ iris_portal.task.count }}  
+            <div class="col-sm-4"><h3>LockTab</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Locktab">{% trans 'Quantity' %}: {{ iris_portal.lock.count }}  </a> </span> 
             </div>
             <div class="col-sm-4"><h3>Products</h3>
                 {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
@@ -50,9 +51,8 @@
             <div class="col-sm-4"><h3>Roles</h3>
                 {% trans 'Quantity' %}: {{ iris_portal.process.count }}  
             </div>
-            <div class="col-sm-4"><h3>View Messages Log</h3>
-                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Alerts"> {% trans 'Alerts' %}: {{ iris_portal.alerts.count }}  </a> </span> 
-                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Messages"> {% trans 'Messages' %}: {{ iris_portal.mess.count }}  </a> </span> 
+            <div class="col-sm-4"><h3>Process</h3>
+                <span class="text-muted"> <a href="/iris_mp_list/?mp_context=Process">{% trans 'Quantity' %}: {{ iris_portal.proc.count }}  </a> </span> 
             </div>
         </div>
     </div>

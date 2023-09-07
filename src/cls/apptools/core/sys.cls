@@ -1056,7 +1056,7 @@ ClassMethod ExportSecurity(dir = "/iris-backup/install/security/") As %Status
 }
 
 /// do ##class(apptools.core.sys).Run2Spool("zw ^%apptools.Setting","^gnTmp")
-ClassMethod Run2Spool(exe, Output gn, oneline = 1) As %Status
+ClassMethod Run2Spool(exe, Output gn, oneline = 1, count) As %Status
 {
  OPEN 2:$job USE 2 
  xecute exe
@@ -1066,6 +1066,7 @@ ClassMethod Run2Spool(exe, Output gn, oneline = 1) As %Status
  for { set i=$order(^SPOOL($job,i),1,s) quit:i=""
  	if oneline set @gn=@gn_s
  	else  set @gn@(i)=s
+ 	set:i<2147483647 count=i
  }
  KILL ^SPOOL($job)
 }

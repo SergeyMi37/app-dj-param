@@ -86,17 +86,40 @@ ClassMethod GetPortal(arg = "", js) As %String
 		set gn="^||tmpPortal"
 		set %Param=js.django.arg
 		set js.proc={}
-		set js.proc.count=11
+		set js.proc.count=##class(apptools.core.telebot).GetPortalProc(1,gn)
+		set js.lock={}
+		set js.lock.count=##class(apptools.core.telebot).GetPortalLock(1,gn)
 		set js.db={}
-		set js.db.count=21
+		set js.db.count=##class(apptools.core.telebot).GetPortalNS(1,gn,"Databases")
 		set js.ns={}
-		set js.ns.count=222
+		set js.ns.count=##class(apptools.core.telebot).GetPortalNS(1,gn,"Namespaces")
 		set js.alerts={}
-		set js.alerts.count=22
+		do ##class(%SYSTEM.Monitor).GetAlerts(,.str,.last)
+		set st=$o(str(""),-1)
+		set js.alerts.count=+st
 		if %Param["Namespaces" {
-			do ##class(apptools.core.telebot).GetPortalNS("NameSpace output",gn)
-			set js.ns.draw=$p($g(@gn),"</table>",1)_"</table>"
+			do ##class(apptools.core.telebot).GetPortalNS(0,gn,"Namespaces"," ")
 		}
+		elseif %Param["Databases" {
+			do ##class(apptools.core.telebot).GetPortalNS(0,gn,"Databases"," ")
+		}
+		elseif %Param["Process" {
+			do ##class(apptools.core.telebot).GetPortalProc(0,gn)
+		}
+		elseif %Param["Locktab" {
+			do ##class(apptools.core.telebot).GetPortalLock(0,gn)
+		}
+		elseif %Param["Alerts" {
+			set i=""
+			do ##class(apptools.core.sys).SetTableHeader(gn,"DataTime","PID","Level","Messages")
+			for { set i=$o(str(i)) quit:i=""
+				do ##class(apptools.core.sys).SetTableRow(gn,i,$p(str(i)," ",1),$p(str(i)," ",2),$p(str(i)," ",3),$p(str(i)," ",4,*))
+			}
+			do ##class(apptools.core.sys).SetTableFooter(gn)
+			set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(""r "_gn_""",10000,$zu(5),"" "",,,"""")"
+			do ##class(apptools.core.sys).Run2Spool(run,gn)
+		}
+		set js.draw=$p($g(@gn),"</table>",1)_"</table>"
 	}
 	catch e { 
 		set js.status="error "_$ze
@@ -104,15 +127,58 @@ ClassMethod GetPortal(arg = "", js) As %String
 	quit ##class(apptools.util.json).ZPretty(js,"","")
 }
 
-/// do ##class(apptools.core.telebot).GetPortalNS("NameSpace output","^tmpNSoutpot")
-ClassMethod GetPortalNS(%Param, gn) As %Status
+/// w ##class(apptools.core.telebot).GetPortalLock(1,"^||tmpL")
+ClassMethod GetPortalLock(count, gn) As %String
 {
 	new $namespace
-	zn "%SYS" 
-	set %sql="select Name, Routines, Globals ,SysGlobals,SysRoutines,TempGlobals from Config.Namespaces where SectionHeader = 'Namespaces'"
-	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(%sql,10000,$zu(5),"" "",,,"""")"
+	set $namespace= "%SYS" 
+	do ##class(apptools.core.sys).SaveQueryTab("%SYS.LockQuery:Detail",gn)
+	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(""r "_gn_""",10000,$zu(5),"" "",,,"""")"
+	do ##class(apptools.core.sys).Run2Spool(run,gn,,.counts)
+	if count {
+		quit +$g(counts)
+	}
+	quit 0
+}
+
+/// do ##class(apptools.core.telebot).GetPortalProc(1,"^tmpNSoutpot","Namespaces"," ")
+ClassMethod GetPortalProc(count, gn, SectionHeader = "Namespaces", %Param = " ") As %String
+{
+	new $namespace
+	set $namespace= "%SYS" 
+	if count {
+		set %sql="select count(*) from %SYS.ProcessQuery"
+		do ##class(apptools.core.sys).sql2gn(%sql,"",gn)
+		quit +$lg($g(@gn@(1)))
+	}
+	else { 
+		;set tabs=""
+		;if SectionHeader = "Namespaces" set tabs=",Routines ,SysGlobals,SysRoutines,TempGlobals"
+		set %sql="select * from %SYS.ProcessQuery"
+	}
+	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(%sql,10000,$zu(5),%Param,,,"""")"
 	do ##class(apptools.core.sys).Run2Spool(run,gn)
-	quit $$$OK
+	quit 0
+}
+
+/// do ##class(apptools.core.telebot).GetPortalNS(1,"^tmpNSoutpot","Namespaces"," ")
+ClassMethod GetPortalNS(count, gn, SectionHeader = "Namespaces", %Param = "") As %String
+{
+	new $namespace
+	set $namespace= "%SYS" 
+	if count {
+		set %sql="select count(*) from Config.Namespaces where SectionHeader = '"_SectionHeader_"'"
+		do ##class(apptools.core.sys).sql2gn(%sql,"",gn)
+		quit +$lg($g(@gn@(1)))
+	}
+	else { 
+		set tabs=""
+		if SectionHeader = "Namespaces" set tabs=",Routines ,SysGlobals,SysRoutines,TempGlobals"
+		set %sql="select Name, Globals"_tabs_" from Config.Namespaces where SectionHeader = '"_SectionHeader_"'"
+	}
+	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(%sql,10000,$zu(5),%Param,,,"""")"
+	do ##class(apptools.core.sys).Run2Spool(run,gn)
+	quit 0
 }
 
 /// Get info from telebot
