@@ -83,11 +83,36 @@ ClassMethod GetPortal(arg = "", js) As %String
 	set js=..GetResp(arg)
 	try {
 		if 'js.django.authenticated quit 
+		set gn="^||tmpPortal"
+		set %Param=js.django.arg
+		set js.proc={}
+		set js.proc.count=11
+		set js.db={}
+		set js.db.count=21
+		set js.ns={}
+		set js.ns.count=222
+		set js.alerts={}
+		set js.alerts.count=22
+		if %Param["Namespaces" {
+			do ##class(apptools.core.telebot).GetPortalNS("NameSpace output",gn)
+			set js.ns.draw=$p($g(@gn),"</table>",1)_"</table>"
+		}
 	}
 	catch e { 
 		set js.status="error "_$ze
 	}
 	quit ##class(apptools.util.json).ZPretty(js,"","")
+}
+
+/// do ##class(apptools.core.telebot).GetPortalNS("NameSpace output","^tmpNSoutpot")
+ClassMethod GetPortalNS(%Param, gn) As %Status
+{
+	new $namespace
+	zn "%SYS" 
+	set %sql="select Name, Routines, Globals ,SysGlobals,SysRoutines,TempGlobals from Config.Namespaces where SectionHeader = 'Namespaces'"
+	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(%sql,10000,$zu(5),"" "",,,"""")"
+	do ##class(apptools.core.sys).Run2Spool(run,gn)
+	quit $$$OK
 }
 
 /// Get info from telebot
