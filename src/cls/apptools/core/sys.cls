@@ -267,7 +267,9 @@ ClassMethod SaveQueryTab(query = "%SYSTEM.License:Counts", gn = "^||q")
 	else { Set status=rset.Execute()}
 	If $$$ISERR(status) quit status
 	Set colcnt=rset.GetColumnCount()
-	For i=1:1:colcnt set @gn@(0,i)=rset.GetColumnName(i),@gn@(-1,rset.GetColumnName(i))=i
+	set GetColumnName=""
+	For i=1:1:colcnt set @gn@(0,i)=rset.GetColumnName(i),@gn@(-1,rset.GetColumnName(i))=i,GetColumnName=GetColumnName_$lb(rset.GetColumnName(i))
+	set @gn@(0)=GetColumnName
 	while rset.Next() {	if $I(row)
 		set str=""
 	   	For i=1:1:colcnt set str=str_$lb(rset.GetData(i))
@@ -1062,11 +1064,11 @@ ClassMethod Run2Spool(exe, Output gn, oneline = 1, count) As %Status
  xecute exe
  CLOSE 2
  KILL @gn
- set (@gn,i)=""
+ set (@gn,i,count)=""
  for { set i=$order(^SPOOL($job,i),1,s) quit:i=""
  	if oneline set @gn=@gn_s
  	else  set @gn@(i)=s
- 	set:i<2147483647 count=i
+ 	set count=count+1
  }
  KILL ^SPOOL($job)
 }

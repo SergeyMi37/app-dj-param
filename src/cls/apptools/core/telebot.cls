@@ -119,7 +119,7 @@ ClassMethod GetPortal(arg = "", js) As %String
 			set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(""r "_gn_""",10000,$zu(5),"" "",,,"""")"
 			do ##class(apptools.core.sys).Run2Spool(run,gn)
 		}
-		set js.draw=$p($g(@gn),"</table>",1)_"</table>"
+		set js.draw=$g(@gn)
 	}
 	catch e { 
 		set js.status="error "_$ze
@@ -132,7 +132,8 @@ ClassMethod GetPortalLock(count, gn) As %String
 {
 	new $namespace
 	set $namespace= "%SYS" 
-	do ##class(apptools.core.sys).SaveQueryTab("%SYS.LockQuery:Detail",gn)
+	do ##class(apptools.core.sys).SaveQueryTab("%SYS.LockQuery:List",gn)
+	m ^%apptools.Info(0)=@gn
 	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(""r "_gn_""",10000,$zu(5),"" "",,,"""")"
 	do ##class(apptools.core.sys).Run2Spool(run,gn,,.counts)
 	if count {
@@ -152,9 +153,8 @@ ClassMethod GetPortalProc(count, gn, SectionHeader = "Namespaces", %Param = " ")
 		quit +$lg($g(@gn@(1)))
 	}
 	else { 
-		;set tabs=""
-		;if SectionHeader = "Namespaces" set tabs=",Routines ,SysGlobals,SysRoutines,TempGlobals"
-		set %sql="select * from %SYS.ProcessQuery"
+		;set %sql="select Pid,NameSpace, Routine, CPUTime,LinesExecuted,CurrentLineAndRoutine,GlobalReferences,LastGlobalReference, State,PidExternal,UserName,ClientIPAddress,ClientNodeName,CurrentDevice,ClientExecutableName,MemoryAllocated,MemoryUsed,	OpenDevices,CSPSessionID, InTransaction,LicenseUserId,Priority,Roles from %SYS.ProcessQuery"
+		set %sql="select Pid,NameSpace, Routine, CPUTime,LinesExecuted,CurrentLineAndRoutine,GlobalReferences, State,UserName from %SYS.ProcessQuery"
 	}
 	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(%sql,10000,$zu(5),%Param,,,"""")"
 	do ##class(apptools.core.sys).Run2Spool(run,gn)
