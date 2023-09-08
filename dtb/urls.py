@@ -57,7 +57,6 @@ urlpatterns = [
     
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
     
-    #path('accounts/login/', views.param_index, name='home'),
     path('param_index/', views.param_index, name='param-index'),
     path('params/add', views.add_param_page, name='param-add'),
     path('params/list', views.params_page, name='param-list'),
