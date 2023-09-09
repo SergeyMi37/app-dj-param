@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 11:14+0300\n"
+"POT-Creation-Date: 2023-09-09 22:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,59 +32,73 @@ msgstr "Код параметра"
 msgid "Passwords do not match or are empty"
 msgstr "Пароли не совпадают или пусты"
 
-#: .\dtb\views.py:74 .\templates\inc\inc-header.html:8
+#: .\dtb\views.py:39
+msgid "Management Portal"
+msgstr "Портал управления системой"
+
+#: .\dtb\views.py:45
+#, fuzzy
+#| msgid "View Options"
+msgid "View list"
+msgstr "Смотреть параметры"
+
+#: .\dtb\views.py:104 .\dtb\views.py:122 .\templates\inc\inc-header.html:19
 msgid "Param Demo"
 msgstr "Apptools-django-Параметры"
 
-#: .\dtb\views.py:93
+#: .\dtb\views.py:141
 msgid "Adding a new parameter"
 msgstr "Добавить новый параметр"
 
-#: .\dtb\views.py:104
+#: .\dtb\views.py:153
 msgid "Options Page"
 msgstr "Опции страницы"
 
-#: .\dtb\views.py:115
+#: .\dtb\views.py:165
 msgid "Parameter deleted successfully"
 msgstr "Параметр удален успешно"
 
-#: .\dtb\views.py:121
+#: .\dtb\views.py:171
 msgid "View parameters"
 msgstr "Смотреть параметры"
 
-#: .\dtb\views.py:125 .\dtb\views.py:145
+#: .\dtb\views.py:175 .\dtb\views.py:196
 msgid "My parameters"
 msgstr "Мои параметры"
 
-#: .\templates\inc\inc-header.html:19 .\templates\pages\index.html:22
+#: .\templates\inc\inc-header.html:13
+msgid "Iris Management Portal"
+msgstr "Портал управления системой"
+
+#: .\templates\inc\inc-header.html:30 .\templates\pages\index.html:22
 msgid "Add parameter"
 msgstr "Добавить параметр"
 
-#: .\templates\inc\inc-header.html:25
+#: .\templates\inc\inc-header.html:36
 msgid "See all parameters"
 msgstr "Смотреть все параметры"
 
-#: .\templates\inc\inc-header.html:32
+#: .\templates\inc\inc-header.html:43
 msgid "See only my parameters"
 msgstr "Смотреть только мои параметры"
 
-#: .\templates\inc\inc-header.html:40
+#: .\templates\inc\inc-header.html:53
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: .\templates\inc\inc-header.html:42
+#: .\templates\inc\inc-header.html:55
 msgid "Go to admin panel"
 msgstr "Перейти в панель администратора"
 
-#: .\templates\inc\inc-header.html:48
+#: .\templates\inc\inc-header.html:61
 msgid "logout"
 msgstr "Выйти"
 
-#: .\templates\inc\inc-header.html:61
+#: .\templates\inc\inc-header.html:74
 msgid "login"
 msgstr "Войти"
 
-#: .\templates\inc\inc-header.html:78
+#: .\templates\inc\inc-header.html:92
 msgid "Change"
 msgstr "Изменить"
 
@@ -107,6 +121,57 @@ msgstr "Контекст"
 #: .\templates\pages\index.html:38
 msgid "find"
 msgstr "найти"
+
+#: .\templates\pages\iris_mp.html:25
+msgid "View Messages Log"
+msgstr "Смотреть протоколы"
+
+#: .\templates\pages\iris_mp.html:26
+msgid "Alerts"
+msgstr "Оповещения"
+
+#: .\templates\pages\iris_mp.html:27
+msgid "Messages"
+msgstr "Сообщения"
+
+#: .\templates\pages\iris_mp.html:29
+msgid "Namespaces"
+msgstr "Области"
+
+#: .\templates\pages\iris_mp.html:30 .\templates\pages\iris_mp.html:33
+#: .\templates\pages\iris_mp.html:38 .\templates\pages\iris_mp.html:41
+#: .\templates\pages\iris_mp.html:44 .\templates\pages\iris_mp.html:49
+#: .\templates\pages\iris_mp.html:52 .\templates\pages\iris_mp.html:55
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\templates\pages\iris_mp.html:32
+msgid "Database"
+msgstr "Базы данных"
+
+#: .\templates\pages\iris_mp.html:37
+msgid "LockTab"
+msgstr "Блокировки"
+
+#: .\templates\pages\iris_mp.html:40
+msgid "Products"
+msgstr "Продукции"
+
+#: .\templates\pages\iris_mp.html:43
+msgid "Web Application"
+msgstr "Веб приложения"
+
+#: .\templates\pages\iris_mp.html:48
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\templates\pages\iris_mp.html:51
+msgid "Roles"
+msgstr "Роли"
+
+#: .\templates\pages\iris_mp.html:54
+msgid "Process"
+msgstr "Процессы"
 
 #: .\templates\pages\param_page.html:8 .\templates\pages\view_params.html:26
 msgid "Name"
@@ -139,9 +204,6 @@ msgstr "Опция"
 #: .\templates\pages\view_params.html:52
 msgid "Total parameters:"
 msgstr "Всего параметров"
-
-#~ msgid "View Options"
-#~ msgstr "Смотреть параметры"
 
 #~ msgid "Welcome"
 #~ msgstr "Привет"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 11:14+0300\n"
+"POT-Creation-Date: 2023-09-09 22:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,59 +30,71 @@ msgstr "Parametercode"
 msgid "Passwords do not match or are empty"
 msgstr "Passwörter stimmen nicht überein oder sind leer"
 
-#: .\dtb\views.py:74 .\templates\inc\inc-header.html:8
+#: .\dtb\views.py:39
+msgid "Management Portal"
+msgstr ""
+
+#: .\dtb\views.py:45
+msgid "View list"
+msgstr ""
+
+#: .\dtb\views.py:104 .\dtb\views.py:122 .\templates\inc\inc-header.html:19
 msgid "Param Demo"
 msgstr "Parameter-Demo"
 
-#: .\dtb\views.py:93
+#: .\dtb\views.py:141
 msgid "Adding a new parameter"
 msgstr "Hinzufügen eines neuen Parameters"
 
-#: .\dtb\views.py:104
+#: .\dtb\views.py:153
 msgid "Options Page"
 msgstr "Optionsseite"
 
-#: .\dtb\views.py:115
+#: .\dtb\views.py:165
 msgid "Parameter deleted successfully"
 msgstr "Parameter erfolgreich gelöscht"
 
-#: .\dtb\views.py:121
+#: .\dtb\views.py:171
 msgid "View parameters"
 msgstr "Parameter anzeigen"
 
-#: .\dtb\views.py:125 .\dtb\views.py:145
+#: .\dtb\views.py:175 .\dtb\views.py:196
 msgid "My parameters"
 msgstr "Meine Parameter"
 
-#: .\templates\inc\inc-header.html:19 .\templates\pages\index.html:22
+#: .\templates\inc\inc-header.html:13
+msgid "Iris Management Portal"
+msgstr ""
+
+#: .\templates\inc\inc-header.html:30 .\templates\pages\index.html:22
 msgid "Add parameter"
 msgstr "Parameter hinzufügen"
 
-#: .\templates\inc\inc-header.html:25
+#: .\templates\inc\inc-header.html:36
 msgid "See all parameters"
 msgstr "Alle Parameter anzeigen"
 
-#: .\templates\inc\inc-header.html:32
+#: .\templates\inc\inc-header.html:43
 msgid "See only my parameters"
 msgstr "Sehen Sie nur meine Parameter"
 
-#: .\templates\inc\inc-header.html:40
+#: .\templates\inc\inc-header.html:53
 msgid "Username"
 msgstr "Nutzername"
 
-#: .\templates\inc\inc-header.html:42
+#: .\templates\inc\inc-header.html:55
 msgid "Go to admin panel"
 msgstr "Gehen Sie zum Admin-Bereich"
 
-#: .\templates\inc\inc-header.html:48
+#: .\templates\inc\inc-header.html:61
 msgid "logout"
 msgstr "Ausloggen"
 
-#: .\templates\inc\inc-header.html:61
+#: .\templates\inc\inc-header.html:74
 msgid "login"
 msgstr "Anmeldung"
 
-#: .\templates\inc\inc-header.html:78
+#: .\templates\inc\inc-header.html:92
 msgid "Change"
 msgstr "Ändern"
 
@@ -105,6 +117,59 @@ msgstr "Kontext"
 #: .\templates\pages\index.html:38
 msgid "find"
 msgstr "finden"
+
+#: .\templates\pages\iris_mp.html:25
+msgid "View Messages Log"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:26
+msgid "Alerts"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:27
+msgid "Messages"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:29
+msgid "Namespaces"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:30 .\templates\pages\iris_mp.html:33
+#: .\templates\pages\iris_mp.html:38 .\templates\pages\iris_mp.html:41
+#: .\templates\pages\iris_mp.html:44 .\templates\pages\iris_mp.html:49
+#: .\templates\pages\iris_mp.html:52 .\templates\pages\iris_mp.html:55
+msgid "Quantity"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:32
+msgid "Database"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:37
+msgid "LockTab"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:40
+msgid "Products"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:43
+msgid "Web Application"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:48
+#, fuzzy
+#| msgid "Username"
+msgid "Users"
+msgstr "Nutzername"
+
+#: .\templates\pages\iris_mp.html:51
+msgid "Roles"
+msgstr ""
+
+#: .\templates\pages\iris_mp.html:54
+msgid "Process"
+msgstr ""
 
 #: .\templates\pages\param_page.html:8 .\templates\pages\view_params.html:26
 msgid "Name"
