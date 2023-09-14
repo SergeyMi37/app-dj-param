@@ -13,10 +13,9 @@
 
 ## What's new
 
-Apptools-admin included Django framework support.
-The project is based on a template and inspired by applications from Dmitry and Oleksandr.
+Apptools-admin includes support for the Django platform for implementing the functions of the IRIS management portal.
 
-![](https://raw.githubusercontent.com/SergeyMi37/apptools-django/master/doc/Screenshot_10-at.png)
+![](https://raw.githubusercontent.com/SergeyMi37/apptools-django/master/doc/Screenshot_dj-1.png)
 
 ## Installation DJANGO
 ```
@@ -29,7 +28,7 @@ python3 -m venv dtb_venv
 source dtb_venv/bin/activate 
 # deactivate
 ```
-For Windows `source venv_dj/Scripts/activate`
+For Windows `source dtb_venv/Scripts/activate`
 
 Install all requirements:
 ```
@@ -39,7 +38,7 @@ Create .env file in root directory and copy-paste this or just run `cp .env_exam
 ```
 DJANGO_DEBUG=True
 DATABASE_URL=sqlite:///db.sqlite3
-TELEGRAM_TOKEN=<PASTE YOUR TELEGRAM TOKEN HERE>
+TELEGRAM_TOKEN=<PASTE YOUR TELEGRAM TOKEN HERE> # To start a project, a token is required
 ISC_Username=_system
 ISC_Password=SYS
 ISC_Namespace=USER
@@ -66,10 +65,12 @@ Run bot in polling mode:
 ```
 python run_polling.py
 ```
-If you want to open Django admin panel which will be located on `http://localhost:8000/tgadmin/`
+If you want to open Django admin panel which will be located on `http://localhost:8000/admin/`
 ```
 python manage.py runserver
 ```
+
+
 ## Installation with ZPM
 
 If the current ZPM instance is not installed, then in one line you can install the latest version of ZPM even with a proxy.
@@ -112,3 +113,7 @@ USER>
 USER>zpm
 zpm:USER>install apptools-django
 ```
+
+## Credits
+
+The project is based on a [template ohld](https://github.com/ohld/django-telegram-bot) and inspired by applications from [Dmitry](https://github.com/caretdev/fastapi-iris-demo) and [Oleksandr](https://openexchange.intersystems.com/package/password-app-iris-db).

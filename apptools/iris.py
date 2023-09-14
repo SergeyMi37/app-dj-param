@@ -52,7 +52,7 @@ def classMethodFooter(request):
 def classMethodPortal(request,mp_list=""):
     try:
         _val=classMethod(request,"apptools.core.telebot", "GetPortal",mp_list)
-        if DEBUG:print('---return-classMethod Portal-----',_val)
+        #if DEBUG:print('---return-classMethod Portal-----',_val)
     except Exception as err:
         if DEBUG:print("---err-portal--------",err)
         _val = f"{{ 'status':'Error Iris Portal :{err}' }}"

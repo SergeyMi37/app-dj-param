@@ -105,7 +105,6 @@ def index_page(request):
         "errors": errors,
         "iris_footer":_foo,
     }
-    #print("===",type(_foo),_foo)
     if _foo.get("status","")=='ok':
         return iris_mp(request)
     else:
